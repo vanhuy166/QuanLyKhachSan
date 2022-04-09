@@ -6,12 +6,17 @@ using System.Web.Mvc;
 
 namespace QuanLyKhachSan.Controllers
 {
-    public class HomeController : Controller
+    public class LoginController : Controller
     {
-        // GET: Home
-        public ActionResult Home()
+        public ActionResult Login()
         {
             return View();
         }
+
+        public ActionResult registration()
+        {
+            return View();
+        }
+      
     }
 }

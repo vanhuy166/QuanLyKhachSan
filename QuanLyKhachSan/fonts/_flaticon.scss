@@ -1,0 +1,59 @@
+    /*
+    Flaticon icon font: Flaticon
+    Creation date: 05/12/2018 13:24
+    */
+
+    @font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+    .fi:before{
+        display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    }
+
+    .flaticon-pool:before { content: "\f100"; }
+.flaticon-desk:before { content: "\f101"; }
+.flaticon-exit:before { content: "\f102"; }
+.flaticon-parking:before { content: "\f103"; }
+.flaticon-hair-dryer:before { content: "\f104"; }
+.flaticon-minibar:before { content: "\f105"; }
+.flaticon-drink:before { content: "\f106"; }
+.flaticon-tray:before { content: "\f107"; }
+.flaticon-cab:before { content: "\f108"; }
+.flaticon-tv:before { content: "\f109"; }
+    
+    $font-Flaticon-pool: "\f100";
+    $font-Flaticon-desk: "\f101";
+    $font-Flaticon-exit: "\f102";
+    $font-Flaticon-parking: "\f103";
+    $font-Flaticon-hair-dryer: "\f104";
+    $font-Flaticon-minibar: "\f105";
+    $font-Flaticon-drink: "\f106";
+    $font-Flaticon-tray: "\f107";
+    $font-Flaticon-cab: "\f108";
+    $font-Flaticon-tv: "\f109";
