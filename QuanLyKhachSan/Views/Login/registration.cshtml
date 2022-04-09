@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "registration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="signup-form ">
+    <div class="wrapper-2">
+        <div class="form-title">Sign up today!</div>
+        <div class="form">
+            <form>
+                <p class="content-item">
+                    <label>
+                        full name
+                        <input type="text" placeholder="Tran tam " required>
+                    </label>
+                </p>
+
+                <p class="content-item">
+                    <label>
+                        email address
+                        <input type="text" placeholder="Trantam@gmail.com" name="email" required>
+                    </label>
+                </p>
+
+                <p class="content-item">
+
+                    <label>
+                        password
+                        <input type="password" placeholder="*****" name="psw" required>
+                    </label>
+                </p>
+
+
+                <button type="submit" class="signup">sign up </button>
+                <a  href="@Url.Action("Login","Login")" class="login">login</a>
+            </form>
+        </div>
+    </div>
+
+</div>
+

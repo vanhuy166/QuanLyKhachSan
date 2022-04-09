@@ -24,6 +24,8 @@ namespace QuanLyKhachSan
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/bootstrap.min.css",
+                      "~/Content/login.css",
                       "~/Content/site.css"));
         }
     }

@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="signup-form ">
+    <div class="wrapper-2">
+        <div class="form-title">Login !</div>
+        <div class="form">
+            <form>
+
+
+                <p class="content-item">
+                    <label>
+                        email address
+                        <input id="username" type="text" placeholder="Trantam@gmail.com" name="email">
+                    </label>
+                </p>
+
+                <p class="content-item">
+
+                    <label>
+                        password
+                        <input id="password" type="password" placeholder="*****" name="psw">
+                    </label>
+                </p>
+
+
+
+            </form>
+            <button id="login" class="signup" onclick="login()">login </button>
+            <a href="@Url.Action("registration","Login")" class="login">sign up</a>
+        </div>
+    </div>
+
+</div>
+
+
+
