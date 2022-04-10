@@ -120,8 +120,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\FeedBackController.cs" />
+    <Compile Include="Controllers\HistoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RoomsController.cs" />
@@ -240,6 +242,8 @@
     <Content Include="Views\Events\Events.cshtml" />
     <Content Include="Views\FeedBack\FeedBack.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\History\History.cshtml" />
+    <Content Include="Views\Admin\EdipRoom.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

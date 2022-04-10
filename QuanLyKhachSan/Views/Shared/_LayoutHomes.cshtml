@@ -23,88 +23,14 @@
 
     <link href="~/Styles/css/style.css" rel="stylesheet" />
 
-    <style>
-    /* huy */
-
-.filter-room {
-    padding: 0 8px;
-}
-
-.filter-room_container {
-    display: flex;
-    /* background-color: red; */
-    width: 100%;
-    height: 100%;
-    margin-left: 48px;
-    flex-direction: column;
-    color: black;
-    background: #e6e5e5;
-}
-
-.filter-room_header {
-    /* background-color: blue; */
-    flex-direction: row;
-    display: flex;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.filter-room_header_item {
-    justify-items: center;
-    text-align: center;
-    padding: 8px;
-}
-
-    .filter-room_header_item > a {
-        float: right;
-        color: #00B6F3;
-        cursor: pointer;
-        padding-top: 3px;
-        height: 100%;
-    }
-
-        .filter-room_header_item > a:hover {
-            color: #f23a2e;
-        }
-
-.filter-room_body,
-.filter-room_header:last-child {
-    flex: 1;
-}
-
-.filter-room_body-item {
-    padding: 24px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-    .filter-room_body-item > h6 {
-        font-style: italic;
-        font-weight: 400;
-    }
-
-@@media only screen and (max-width:1023px) {
-    .filter-room {
-        display: none;
-    }
-
-    .col-10.list-room {
-        max-width: 100%;
-        flex: 1;
-    }
-}
-
-.btn-DatPhong {
-    /* margin-left: 32px; */
-    float: right;
-}
-
-.img-service {
-    min-height: 300px;
-}
-
-    </style>
 
 </head>
+<script>
+    $(document).ready(function () {
 
+        $('#Admin').attr('display': none)
+    }
+        </script>
 
 
 <body>
@@ -163,7 +89,7 @@
                                             </li>
                                             <li><a href="@Url.Action("Events","Events")">Sự kiện</a></li>
                                             <li><a href="@Url.Action("About","Home")">Thông tin</a></li>
-                                            <li><a href="@Url.Action("FeeaBack","Events")">Liên hệ</a></li>
+                                            <li><a href="@Url.Action("FeedBack","FeedBack")">Liên hệ</a></li>
 
 
                                             <li class="has-children">
@@ -171,7 +97,8 @@
                                                      width="50dp" height="	50dp" alt="" style="border-radius: 100px; ;">
                                                 <ul class="dropdown arrow-top">
                                                     <li><a href="#">tran tam</a></li>
-                                                    <li><a href="history.html">Lịch sử </a></li>
+                                                    <li id="Admin"><a href=@Url.Action("EdipRoom","Admin")>Admin</a></li>
+                                                    <li><a href=@Url.Action("History","History")>Lịch sử </a></li>
                                                     <li><a href=@Url.Action("Login","Login")>Đăng xuất</a></li>
 
 
@@ -285,9 +212,9 @@
 
                             <script data-cfasync="false"
                                     src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-                            <script>document.write(new Date().getFullYear());</script>&nbsp We are number 2, no one is number 1
-                            <i class="icon-heart text-primary" aria-hidden="true"></i>
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+<script>document.write(new Date().getFullYear());</script>&nbsp We are number 2, no one is number 1
+<i class="icon-heart text-primary" aria-hidden="true"></i>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         </p>
                     </div>
 
@@ -295,93 +222,93 @@
             </div>
         </footer>
     </div>
-    <script src="~/Styles/js/aos.js"></script>
-    <script src="~/Styles/js/bootstrap-datepicker.min.js"></script>
-    <script src="~/Styles/js/bootstrap.min.js"></script>
-    <script src="~/Styles/js/jquery-3.3.1.min.js"></script>
-    <script src="~/Styles/js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="~/Styles/js/jquery-ui.js"></script>
-    <script src="~/Styles/js/jquery.countdown.min.js"></script>
-    <script src="~/Styles/js/jquery.magnific-popup.min.js"></script>
-    <script src="~/Styles/js/jquery.stellar.min.js"></script>
-    <script src="~/Styles/js/login.js"></script>
-    <script src="~/Styles/js/main.js"></script>
-    <script src="~/Styles/js/mediaelement-and-player.min.js"></script>
-    <script src="~/Styles/js/owl.carousel.min.js"></script>
-    <script src="~/Styles/js/popper.min.js"></script>
-    <script src="~/Styles/js/slick.min.js"></script>
+<script src="~/Styles/js/aos.js"></script>
+<script src="~/Styles/js/bootstrap-datepicker.min.js"></script>
+<script src="~/Styles/js/bootstrap.min.js"></script>
+<script src="~/Styles/js/jquery-3.3.1.min.js"></script>
+<script src="~/Styles/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="~/Styles/js/jquery-ui.js"></script>
+<script src="~/Styles/js/jquery.countdown.min.js"></script>
+<script src="~/Styles/js/jquery.magnific-popup.min.js"></script>
+<script src="~/Styles/js/jquery.stellar.min.js"></script>
+<script src="~/Styles/js/login.js"></script>
+<script src="~/Styles/js/main.js"></script>
+<script src="~/Styles/js/mediaelement-and-player.min.js"></script>
+<script src="~/Styles/js/owl.carousel.min.js"></script>
+<script src="~/Styles/js/popper.min.js"></script>
+<script src="~/Styles/js/slick.min.js"></script>
 
-    <script>
-        function testbtn() {
-            var fromDate = new Date($('#fromDate').val());
-            var toDate = new Date($('#toDate').val());
-            alert(Math.round((toDate - fromDate) / (1000 * 60 * 60 * 24)));
-        }
-    </script>
-
-   
+<script>
+    function testbtn() {
+var fromDate = new Date($('#fromDate').val());
+    var toDate = new Date($('#toDate').val());
+    alert(Math.round((toDate - fromDate) / (1000 * 60 * 60 * 24)));
+}
+</script>
 
 
-    <script>
-
-        $('#fromDate').change(function () {
-            var fromDate = new Date($('#fromDate').val());
-            var today = new Date();
-            var dd = fromDate.getDate();
-            var mm = fromDate.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
-            var yyyy = fromDate.getFullYear();
-            if (dd < 10) {
-                dd = '0' + dd
-            }
-            if (mm < 10) {
-                mm = '0' + mm
-            }
-
-            today = yyyy + '-' + mm + '-' + dd;
-
-            $('#toDate').attr('min', today);
 
 
-        });
+<script>
 
-        $(document).ready(function () {
-            var today = new Date();
-            var dd = today.getDate();
-            var mm = today.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
-            var yyyy = today.getFullYear();
-            if (dd < 10) {
-                dd = '0' + dd
-            }
-            if (mm < 10) {
-                mm = '0' + mm
-            }
+    $('#fromDate').change(function () {
+var fromDate = new Date($('#fromDate').val());
+    var today = new Date();
+    var dd = fromDate.getDate();
+    var mm = fromDate.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
+    var yyyy = fromDate.getFullYear();
+    if (dd < 10) {
+        dd = '0' + dd
+    }
+    if (mm < 10) {
+        mm = '0' + mm
+    }
 
-            today = yyyy + '-' + mm + '-' + dd;
+    today = yyyy + '-' + mm + '-' + dd;
 
-            $('#fromDate').attr('min', today);
+    $('#toDate').attr('min', today);
 
-            $('#fromDate').attr('value', today);
-            $('#toDate').attr('value', today);
 
-        });
+});
 
-        document.addEventListener('DOMContentLoaded', function () {
-            var mediaElements = document.querySelectorAll('video, audio'), total = mediaElements.length;
+    $(document).ready(function () {
+var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
+    var yyyy = today.getFullYear();
+    if (dd < 10) {
+        dd = '0' + dd
+    }
+    if (mm < 10) {
+        mm = '0' + mm
+    }
 
-            for (var i = 0; i < total; i++) {
-                new MediaElementPlayer(mediaElements[i], {
-                    pluginPath: 'https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/',
-                    shimScriptAccess: 'always',
-                    success: function () {
-                        var target = document.body.querySelectorAll('.player'), targetTotal = target.length;
-                        for (var j = 0; j < targetTotal; j++) {
-                            target[j].style.visibility = 'visible';
-                        }
-                    }
-                });
+    today = yyyy + '-' + mm + '-' + dd;
+
+    $('#fromDate').attr('min', today);
+
+    $('#fromDate').attr('value', today);
+    $('#toDate').attr('value', today);
+
+});
+
+    document.addEventListener('DOMContentLoaded', function () {
+var mediaElements = document.querySelectorAll('video, audio'), total = mediaElements.length;
+
+    for (var i = 0; i < total; i++) {
+        new MediaElementPlayer(mediaElements[i], {
+            pluginPath: 'https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/',
+            shimScriptAccess: 'always',
+            success: function () {
+                var target = document.body.querySelectorAll('.player'), targetTotal = target.length;
+                for (var j = 0; j < targetTotal; j++) {
+                    target[j].style.visibility = 'visible';
+                }
             }
         });
-    </script>
+}
+});
+</script>
 
 </body>
 
