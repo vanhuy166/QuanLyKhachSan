@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "RoomDetail";
+    Layout = "~/Views/Shared/_LayoutHomes.cshtml";
+}
+<div class="site-section">
+    <div class="container">
+
+
+        <div class="row align-items-center">
+            <div class="col-md-6 mb-5 mb-md-0">
+
+                <div class="img-border">
+                    <a href="https://vimeo.com/28959265" class="popup-vimeo image-play">
+                        <span class="icon-wrap">
+                            <span class="icon icon-play"></span>
+                        </span>
+                        <img src="~/Styles/images/img_2.jpg" alt="" class="img-fluid">
+                    </a>
+                </div>
+                <img src="~/Styles/images/img_1.jpg" alt="Image" class="img-fluid image-absolute">
+
+            </div>
+            <div class="col-md-5 ml-auto">
+                <div class="section-heading text-left">
+                    <h2 class="mb-5">Thông tin</h2>
+                </div>
+                <table style="width:100%;">
+                    <tr>
+                        <th>Phòng:</th>
+                        <td>Phòng 101</td>
+                    </tr>
+                    <tr>
+                        <th>Loại phòng:</th>
+                        <td>VIP</td>
+                    </tr>
+                    <tr>
+                        <th>Số giường:</th>
+                        <td>1 giường đơn</td>
+                    </tr>
+                    <tr>
+                        <th>Giá phòng:</th>
+                        <td>500.000VNĐ</td>
+                    </tr>
+
+                    <tr>
+                        <th>Ngày đến</th>
+                        <td> <input type="date" id="fromDate" name="fromDate" ></td>
+                    </tr>
+                    <tr>
+                        <th>Ngày đi</th>
+                        <td><input type="date" id="toDate" name="toDate"></td>
+                    </tr>
+                </table>
+
+                <br>
+                <p class="mb-4">Khách sạn Hoàng Hôn luôn mang vẻ đẹp hiện đại xen lẫn nét cổ kính. Đặt khách sạn sớm nhất để hưởng trọn ưu đãi, hứa hẹn một kì nghỉ với những ...</p>
+                <p>
+                    <a href="https://vimeo.com/28959265" class="btn btn-primary pill px-4  popup-vimeo text-uppercase btn btn-XemVideo">Xem Video <span class="icon-arrow-right small"></span></a>
+                    <button href="#" class="btn btn-primary pill text-white px-4 btn-DatPhong" id="btn-DatPhong" onclick="testbtn();">Đặt phòng</button>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div>

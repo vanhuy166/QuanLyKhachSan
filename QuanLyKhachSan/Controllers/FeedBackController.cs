@@ -6,15 +6,10 @@ using System.Web.Mvc;
 
 namespace QuanLyKhachSan.Controllers
 {
-    public class HomeController : Controller
+    public class FeedBackController : Controller
     {
-        // GET: Home
-        public ActionResult Home()
-        {
-            return View();
-        }
-
-        public ActionResult About()
+        // GET: FeedBack
+        public ActionResult FeedBack()
         {
             return View();
         }

@@ -6,17 +6,18 @@ using System.Web.Mvc;
 
 namespace QuanLyKhachSan.Controllers
 {
-    public class HomeController : Controller
+    public class RoomsController : Controller
     {
-        // GET: Home
-        public ActionResult Home()
+        // GET: Rooms
+        public ActionResult ListRooms()
         {
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult RoomDetail()
         {
             return View();
         }
+
     }
 }

@@ -120,8 +120,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\EventsController.cs" />
+    <Compile Include="Controllers\FeedBackController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\RoomsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -175,9 +178,14 @@
     <Content Include="Styles\css\style.css" />
     <Content Include="Styles\images\about_2.jpg" />
     <Content Include="Styles\images\about_3.jpg" />
+    <Content Include="Styles\images\bia.png" />
+    <Content Include="Styles\images\coca.png" />
+    <Content Include="Styles\images\fanta.png" />
+    <Content Include="Styles\images\giala.png" />
     <Content Include="Styles\images\hero_1.jpg" />
     <Content Include="Styles\images\hero_2.jpg" />
     <Content Include="Styles\images\hero_3.jpg" />
+    <Content Include="Styles\images\hoaqua.png" />
     <Content Include="Styles\images\img_1.jpg" />
     <Content Include="Styles\images\img_2.jpg" />
     <Content Include="Styles\images\img_3.jpg" />
@@ -185,6 +193,8 @@
     <Content Include="Styles\images\img_5.jpg" />
     <Content Include="Styles\images\img_6.jpg" />
     <Content Include="Styles\images\img_7.jpg" />
+    <Content Include="Styles\images\masage.png" />
+    <Content Include="Styles\images\pepsi.png" />
     <Content Include="Styles\images\person_1.jpg" />
     <Content Include="Styles\images\person_2.jpg" />
     <Content Include="Styles\images\person_3.jpg" />
@@ -225,6 +235,11 @@
     <Content Include="Styles\scss\_site-base.scss" />
     <Content Include="Styles\scss\_site-blocks.scss" />
     <Content Include="Styles\scss\_site-navbar.scss" />
+    <Content Include="Views\Rooms\ListRooms.cshtml" />
+    <Content Include="Views\Rooms\RoomDetail.cshtml" />
+    <Content Include="Views\Events\Events.cshtml" />
+    <Content Include="Views\FeedBack\FeedBack.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

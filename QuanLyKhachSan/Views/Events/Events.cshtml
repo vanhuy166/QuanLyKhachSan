@@ -1,0 +1,135 @@
+﻿
+@{
+    ViewBag.Title = "Events";
+    Layout = "~/Views/Shared/_LayoutHomes.cshtml";
+}
+
+<div class="site-section bg-light">
+    <div class="py-1">
+        <div class="row">
+            <div class="col-md-6 mx-auto text-center mb-5 section-heading">
+                <h2 class="mb-5">Our services</h2>
+            </div>
+        </div>
+        <div class="row">
+            <!-- lọc dịch vụ -->
+            <div class="col-2 filter-room">
+                <div class="filter-room_container">
+                    <div class="filter-room_header">
+                        <div class="filter-room_header_item">
+                            <h4>Bộ lọc</h4>
+                        </div>
+                        <div class="filter-room_header_item" style="flex: 1;">
+                            <a href="#" id="clear_filter-room">Xóa tất cả lọc</a>
+                        </div>
+                    </div>
+                    <div class="filter-room_body">
+                        <div class="filter-room_body-item">
+                            <h6>Loại dịch vụ</h6>
+                            <table class="table table-hover">
+                                <tr>
+                                    <td>
+                                        <input type="radio" name="LoaiDV" id="DVDoUong">
+                                    </td>
+                                    <td><label for="DVDoUong">Đồ uống</label></td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <input type="radio" name="LoaiDV" id="DVDoAn">
+                                    </td>
+                                    <td><label for="DVDoAn">Đồ ăn</label></td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <input type="radio" name="LoaiDV" id="DVGiaLa">
+                                    </td>
+                                    <td><label for="DVGiaLa">Giặt ủi</label></td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <input type="radio" name="LoaiDV" id="DVMassage">
+                                    </td>
+                                    <td><label for="DVMassage">Massage</label></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="filter-room_body-item">
+                            <h6>Giá Dịch vụ</h6>
+                            <table class="table table-hover" style="width: 100%;">
+                                <tr>
+                                    <td>
+                                        <input type="radio" name="GiaDV" id="GiaDV1">
+                                    </td>
+                                    <td><label for="GiaDV1">dưới 50.000 VNĐ</label></td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <input type="radio" name="GiaDV" id="GiaDV2">
+                                    </td>
+                                    <td><label for="GiaDV2">50.000 đến 150.000VND</label></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="radio" name="GiaDV" id="GiaDV2">
+                                    </td>
+                                    <td><label for="GiaDV2">150.000 đến 250.000VND</label></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="radio" name="GiaDV" id="GiaDV3">
+                                    </td>
+                                    <td><label for="GiaDV3">trên 250.000 VNĐ</label></td>
+                                </tr>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Danh sách dịch vụ -->
+            <div class="col-10 list-room">
+                <div class="container">
+                    <div class="row">
+                        @{
+                            for (int i = 0; i < 13; i++)
+                            {
+                                <div class="col-md-6 col-lg-4 mb-5">
+                                    <div class="hotel-room text-center">
+                                        <a href="#" class="d-block mb-0 thumbnail"><img src="~/Styles/images/coca.png" alt="Image" class="img-fluid img-service"></a>
+                                        <div class="hotel-room-body">
+                                            <h3 class="heading mb-0"><a href="#">Massage</a></h3>
+                                            <strong class="price">$155.00</strong>
+                                            <p><a href="#" class="btn btn-primary pill text-white px-4">Buy Now</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+
+                    </div>
+
+                    <div class="row mt-5">
+                        <div class="col-md-12 text-center">
+                            <div class="site-block-27">
+                                <ul>
+                                    <li><a href="#">&lt;</a></li>
+                                    <li class="active"><span>1</span></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li><a href="#">&gt;</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
