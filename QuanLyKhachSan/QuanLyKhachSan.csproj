@@ -268,7 +268,6 @@
     <Compile Include="Models\Role.cs">
       <DependentUpon>KhachSan.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Room.cs" />
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>KhachSan.tt</DependentUpon>
     </Compile>
