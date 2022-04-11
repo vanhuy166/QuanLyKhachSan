@@ -13,6 +13,7 @@
           <Property Name="Ten" Type="nvarchar" MaxLength="45" Nullable="false" />
           <Property Name="Gia" Type="float" />
           <Property Name="Loai" Type="nvarchar" MaxLength="45" Nullable="false" />
+          <Property Name="Anh" Type="varchar" MaxLength="256" />
         </EntityType>
         <EntityType Name="HoaDon">
           <Key>
@@ -61,6 +62,7 @@
           </Key>
           <Property Name="ID_Phong" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenPhong" Type="nvarchar" MaxLength="45" Nullable="false" />
+          <Property Name="Anh" Type="varchar" MaxLength="256" />
         </EntityType>
         <EntityType Name="Phong_LoaiPhong">
           <Key>
@@ -95,6 +97,7 @@
           <Property Name="MatKhau" Type="varchar" MaxLength="256" Nullable="false" />
           <Property Name="TenTK" Type="varchar" MaxLength="45" />
           <Property Name="Salt" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="Anh" Type="varchar" MaxLength="256" />
         </EntityType>
         <EntityType Name="TaiKhoan_HoaDon">
           <Key>
@@ -341,6 +344,7 @@
           <Property Name="Ten" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Gia" Type="Double" />
           <Property Name="Loai" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Anh" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="HoaDons" Relationship="Self.HoaDon_DichVu" FromRole="DichVu" ToRole="HoaDon" />
         </EntityType>
         <EntityType Name="HoaDon">
@@ -389,6 +393,7 @@
           </Key>
           <Property Name="ID_Phong" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenPhong" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Anh" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="HoaDon_Phong" Relationship="Self.HD_Phong_FK2" FromRole="Phong" ToRole="HoaDon_Phong" />
           <NavigationProperty Name="LoaiPhongs" Relationship="Self.Phong_LoaiPhong" FromRole="Phong" ToRole="LoaiPhong" />
         </EntityType>
@@ -418,6 +423,7 @@
           <Property Name="MatKhau" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TenTK" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="Salt" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Anh" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="HoaDons" Relationship="Self.TaiKhoan_HoaDon" FromRole="TaiKhoan" ToRole="HoaDon" />
           <NavigationProperty Name="PhanHois" Relationship="Self.TaiKhoan_PhanHoi" FromRole="TaiKhoan" ToRole="PhanHoi" />
           <NavigationProperty Name="Roles" Relationship="Self.TaiKhoan_Role" FromRole="TaiKhoan" ToRole="Role" />
@@ -518,6 +524,7 @@
                 <ScalarProperty Name="Ten" ColumnName="Ten" />
                 <ScalarProperty Name="Gia" ColumnName="Gia" />
                 <ScalarProperty Name="Loai" ColumnName="Loai" />
+                <ScalarProperty Name="Anh" ColumnName="Anh" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -562,6 +569,7 @@
               <MappingFragment StoreEntitySet="Phong">
                 <ScalarProperty Name="ID_Phong" ColumnName="ID_Phong" />
                 <ScalarProperty Name="TenPhong" ColumnName="TenPhong" />
+                <ScalarProperty Name="Anh" ColumnName="Anh" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -591,6 +599,7 @@
                 <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
                 <ScalarProperty Name="TenTK" ColumnName="TenTK" />
                 <ScalarProperty Name="Salt" ColumnName="Salt" />
+                <ScalarProperty Name="Anh" ColumnName="Anh" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -24,6 +24,7 @@ namespace QuanLyKhachSan.Models
         public string Ten { get; set; }
         public Nullable<double> Gia { get; set; }
         public string Loai { get; set; }
+        public string Anh { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HoaDon> HoaDons { get; set; }

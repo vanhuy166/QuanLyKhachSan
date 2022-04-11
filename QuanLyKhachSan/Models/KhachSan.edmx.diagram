@@ -4,16 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="452e5390ad844f91a3e9430547311091" Name="Diagram1">
-        <EntityTypeShape EntityType="QuanLyKhachSanModel.DichVu" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyKhachSanModel.HoaDon" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyKhachSanModel.HoaDon_Phong" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyKhachSanModel.LoaiPhong" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyKhachSanModel.PhanHoi" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+      <Diagram DiagramId="06e7a8913ecb439486ae83c67640e6a5" Name="Diagram1">
+        <EntityTypeShape EntityType="QuanLyKhachSanModel.DichVu" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyKhachSanModel.HoaDon" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyKhachSanModel.HoaDon_Phong" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyKhachSanModel.LoaiPhong" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyKhachSanModel.PhanHoi" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyKhachSanModel.Phong" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QuanLyKhachSanModel.Role" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyKhachSanModel.sysdiagram" Width="1.5" PointX="7.75" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyKhachSanModel.TaiKhoan" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyKhachSanModel.sysdiagram" Width="1.5" PointX="7.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyKhachSanModel.TaiKhoan" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
         <AssociationConnector Association="QuanLyKhachSanModel.HD_Phong_FK1" ManuallyRouted="false" />
         <AssociationConnector Association="QuanLyKhachSanModel.HD_Phong_FK2" ManuallyRouted="false" />
         <AssociationConnector Association="QuanLyKhachSanModel.HoaDon_DichVu" ManuallyRouted="false" />
