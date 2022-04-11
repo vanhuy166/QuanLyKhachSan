@@ -16,9 +16,14 @@ namespace QuanLyKhachSan.Controllers
         [AllowAnonymous]
         [HttpGet]
         [Route("all")]
-        public List<Phong> GetPhongs()
+        public HttpResponseMessage GetPhongs()
         {
-            return ks.Phongs.ToList();
+            List<Phong> listPhong = ks.Phongs.ToList();
+            var response = Request.CreateResponse(
+                HttpStatusCode.OK, listPhong,
+                Configuration.Formatters.JsonFormatter);
+
+            return response;
         }
 
         [AllowAnonymous]
