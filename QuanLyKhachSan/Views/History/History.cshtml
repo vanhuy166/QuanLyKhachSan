@@ -3,7 +3,7 @@
     ViewBag.Title = "History";
     Layout = "~/Views/Shared/_LayoutHomes.cshtml";
 }
-
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <div class="container">
 
     <div class="row">
@@ -18,55 +18,82 @@
                 <tr>
                     <th scope="col">Sản Phầm</th>
                     <th scope="col">Đơn Giá</th>
+                    <th scope="col">Só Lượng</th>
                     <th scope="col">Số Tiền</th>
                     <th scope="col">Thao Tác</th>
                 </tr>
             </thead>
-            <tbody>
-                
-                <tr>
-                    <th scope="row">
-                        <img src="https://i.pinimg.com/originals/13/32/ba/1332bae0e95e89393820f97f4a889535.jpg"
-                             width="50dp" height="40dp" alt=""> phong 1
-                    </th>
-                    <td>30$</td>
-                    <td>30$</td>
-                    <td><button type="button" class="btn btn-outline-danger">Hủy</button></td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <img src="https://i.pinimg.com/originals/13/32/ba/1332bae0e95e89393820f97f4a889535.jpg"
-                             width="50dp" height="40dp" alt=""> phong 1
-                    </th>
-                    <td>30$</td>
-                    <td>30$</td>
-                    <td><button type="button" class="btn btn-outline-danger">Hủy</button></td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <img src="https://i.pinimg.com/originals/13/32/ba/1332bae0e95e89393820f97f4a889535.jpg"
-                             width="50dp" height="40dp" alt=""> phong 1
-                    </th>
-                    <td>30$</td>
-                    <td>30$</td>
-                    <td><button type="button" class="btn btn-outline-danger">Hủy</button></td>
-                </tr>
-             
-              
-            
+            <tbody id="allHistory">               
+
+
             </tbody>
-            <thead>
-                <tr>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                    <th scope="col">3000$</th>
-                    <th scope="col"> <button type="button" class="btn btn-outline-danger">Đặt</button></td>
-                </tr>
+            <thead id="tinhTien">
+                
             </thead>
         </table>
+
 
 
     </div>
 
 </div>
+<script>
 
+
+
+    var values = [],
+        keys = Object.keys(localStorage),
+        i = keys.length;
+    alert(i);
+    let table = '';
+
+    var TongTien = 0;
+
+    while (i--) {
+
+        var obj = JSON.parse(localStorage.getItem(keys[i]));
+        var tt = parseFloat(obj.date + 1) * parseFloat(obj.price);
+        TongTien += tt;
+
+        table += `
+        <tr>
+                    <th scope="row">
+                        <img src="/Styles/images/`+ obj.ing + `"
+                             width="50dp" height="40dp" alt=""> `+ obj.name + `
+                    </th>
+                    <td>`+ obj.price + `</td>
+                    <td>`+ parseFloat(parseFloat(obj.date) + parseFloat(obj.type)) + `</td>
+                    <td>`+ tt + `</td>
+                    <td><button type="button" class="btn btn-outline-danger" onclick="huybtn('`+ obj.id + `')">Hủy</button></td>
+                </tr>
+            `;
+
+    }
+
+    console.log(TongTien);
+
+    document.getElementById('allHistory').innerHTML = table;
+
+    document.getElementById('tinhTien').innerHTML = `<tr>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col">`+TongTien+` VND</th>
+                    <th scope="col"> <button type="button" class="btn btn-outline-danger" onclick = "ThanhToan()">Đặt</button></td>
+                </tr>`;
+
+
+
+
+</script>
+<script>
+    function huybtn(key){
+        if (confirm('bạn có muốn hủy không?')) {
+            localStorage.removeItem(key);
+            console.log('Hủy thành công');
+            location.reload();
+        } else {
+            
+        }
+    }
+</script>

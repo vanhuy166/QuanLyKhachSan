@@ -26,18 +26,7 @@ namespace QuanLyKhachSan.Controllers
 
             return response;
         }
-        [AllowAnonymous]
-        [HttpGet]
-        [Route("byID/{idPhong:int}")]
-        public HttpResponseMessage GetPhongByID(int idPhong)
-        {
-            Phong phong = ks.Phongs.SingleOrDefault(n => n.ID_Phong == idPhong);
-            var response = Request.CreateResponse(
-                HttpStatusCode.OK, phong,
-                Configuration.Formatters.JsonFormatter);
-
-            return response;
-        }
+       
         [AllowAnonymous]
         [HttpGet]
         [Route("byType/{idLoai:int}")]

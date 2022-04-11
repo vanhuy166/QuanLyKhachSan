@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "RoomDetail";
+    ViewBag.Title = "Eventsct";
     Layout = "~/Views/Shared/_LayoutHomes.cshtml";
 }
 
@@ -8,16 +8,17 @@
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 
 <div class="site-section">
-    <div class="container" id="chiTietPhong">
+    <div class="container" id="ctDichvu">
 
     </div>
 </div>
 
 <script>
-    var idRoom = sessionStorage.getItem('key');
+    var idDichvu = sessionStorage.getItem('key1');
+    alert(idDichvu);
 
     $.ajax({
-        url: 'https://localhost:44370/api/v1/room/' + idRoom,
+        url: 'https://localhost:44370/api/v1/hotelServices/' + idDichvu,
         method: 'GET',
         contentType: 'json',
         dataType: 'json',
@@ -25,7 +26,7 @@
 
         },
         success: function (res) {
-            $("#chiTietPhong").empty();
+            $("#ctDichvu").empty();
             const len = res.length;
             console.log(res);
             let table = '';
@@ -51,46 +52,73 @@
                     </div>
                     <table style="width:100%;">
                         <tr>
-                            <th>Phòng:</th>
-                            <td>`+ res.TenPhong + `</td>
+                            <th>Dịch vụ:</th>
+                            <td>`+ res.Ten + `</td>
                         </tr>
                         <tr>
                             <th>Loại phòng:</th>
-                            <td>`+ res.LoaiPhongs[0].TenLoai + `</td>
+                            <td>`+ res.Loai + `</td>
                         </tr>
-                        <tr>
-                            <th>Số giường:</th>
-                            <td>`+ res.LoaiPhongs[0].SoGiuong + `</td>
-                        </tr>
+                       
                         <tr>
                             <th>Giá phòng:</th>
-                            <td>`+ res.LoaiPhongs[0].Gia + ` VNĐ</td>
+                            <td>`+ res.Gia + ` VNĐ</td>
                         </tr>
 
                         <tr>
-                            <th>Ngày đến</th>
-                            <td> <input type="date" id="fromDate" name="fromDate" ></td>
+                            <th>Số Lượng</th>
+                            <td> <input type="number" id="sl" name="fromDate" value = "1" ></td>
                         </tr>
-                        <tr>
-                            <th>Ngày đi</th>
-                            <td><input type="date" id="toDate" name="toDate"></td>
-                        </tr>
+                        
                     </table>
 
                     <br>
                     <p class="mb-4">Khách sạn Hoàng Hôn luôn mang vẻ đẹp hiện đại xen lẫn nét cổ kính. Đặt khách sạn sớm nhất để hưởng trọn ưu đãi, hứa hẹn một kì nghỉ với những ...</p>
                     <p>
                         <a href="https://vimeo.com/28959265" class="btn btn-primary pill px-4  popup-vimeo text-uppercase btn btn-XemVideo">Xem Video <span class="icon-arrow-right small"></span></a>
-                        <button href="#" class="btn btn-primary pill text-white px-4 btn-DatPhong" id="btn-DatPhong" onclick="testbtn();">Đặt phòng</button>
+                        <button  class="btn btn-primary pill text-white px-4 btn-DatPhong" id="btn-DatPhong" onclick="addbtn();">Thêm</button>
                     </p>
 
                 </div>
             </div>
             `;
 
-            document.getElementById('chiTietPhong').innerHTML = table;
+            document.getElementById('ctDichvu').innerHTML = table;
         },
         fail: function (response) { }
 
     });
+    </script>
+
+<script>
+    function addbtn() {
+        var sl = $('#sl').val();
+        var iddichvu = sessionStorage.getItem('key1');
+        $.ajax({
+            url: 'https://localhost:44370/api/v1/hotelServices/' + iddichvu,
+            method: 'GET',
+            contentType: 'json',
+            dataType: 'json',
+            error: function (res) {
+
+            },
+            success: function (res) {
+                var id = "id" + Math.random().toString(16).slice(2);
+                var oneroom = {
+                    id: id,
+                    name: res.Ten,
+                    price: res.Gia,
+                    ing: res.Anh,
+                    date: sl,
+                    type:"0"
+                }
+                localStorage.setItem(id.toString(), JSON.stringify(oneroom));
+
+
+            },
+            fail: function (response) { }
+
+        });
+    }
 </script>
+

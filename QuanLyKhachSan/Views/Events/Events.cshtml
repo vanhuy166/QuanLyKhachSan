@@ -1,8 +1,10 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Events";
     Layout = "~/Views/Shared/_LayoutHomes.cshtml";
 }
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
 
 <div class="site-section bg-light">
     <div class="py-1">
@@ -93,22 +95,7 @@
             <!-- Danh sách dịch vụ -->
             <div class="col-10 list-room">
                 <div class="container">
-                    <div class="row">
-                        @{
-                            for (int i = 0; i < 13; i++)
-                            {
-                                <div class="col-md-6 col-lg-4 mb-5">
-                                    <div class="hotel-room text-center">
-                                        <a href="#" class="d-block mb-0 thumbnail"><img src="~/Styles/images/coca.png" alt="Image" class="img-fluid img-service"></a>
-                                        <div class="hotel-room-body">
-                                            <h3 class="heading mb-0"><a href="#">Massage</a></h3>
-                                            <strong class="price">$155.00</strong>
-                                            <p><a href="#" class="btn btn-primary pill text-white px-4">Buy Now</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            }
-                        }
+                    <div class="row" id="listDichVu">                     
 
                     </div>
 
@@ -133,3 +120,42 @@
     </div>
 </div>
 
+<script>
+    $.ajax({
+        url: 'https://localhost:44370/api/v1/hotelServices/all',
+        method: 'GET',
+        contentType: 'json',
+        dataType: 'json',
+        error: function (res) {
+
+        },
+        success: function (res) {
+            $("#listDichVu").empty();
+            const len = res.length;
+            console.log(res);
+            let table = '';
+            for (var i = 0; i < len; ++i) {
+                table += `
+                    <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="hotel-room text-center">
+                            <a href="#" class="d-block mb-0 thumbnail"><img src="/Styles/images/`+res[i].Anh+`" alt="Image" class="img-fluid img-service"></a>
+                            <div class="hotel-room-body">
+                                <h3 class="heading mb-0"><a href="#">`+res[i].Ten+`</a></h3>
+                                <strong class="price">`+ res[i].Gia +` VNĐ</strong>
+                                <p onclick="clickDv('`+ res[i].ID_DichVu +`')"><a   href= "@Url.Action("Eventsct", "Events")" class="btn btn-primary pill text-white px-4">Buy Now</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+            }
+            document.getElementById('listDichVu').innerHTML = table;
+        },
+        fail: function (response) { }
+
+    });
+    function clickDv(idDichvu) {
+        console.log("aaa" + idDichvu);
+        sessionStorage.setItem('key1', idDichvu);
+    }
+
+</script>
