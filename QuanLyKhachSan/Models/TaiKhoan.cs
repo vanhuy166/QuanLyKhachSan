@@ -23,8 +23,8 @@ namespace QuanLyKhachSan.Models
         }
     
         public int ID_TK { get; set; }
-        public string MatKhau { get; set; }
         public string TenTK { get; set; }
+        public string MatKhau { get; set; }
         public string Salt { get; set; }
         public string Anh { get; set; }
     
