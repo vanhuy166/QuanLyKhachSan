@@ -240,8 +240,7 @@
 <script>
     function testbtn() {
     var fromDate = new Date($('#fromDate').val());
-    var toDate = new Date($('#toDate').val());
-        alert(Math.round((toDate - fromDate) / (1000 * 60 * 60 * 24)));
+    var toDate = new Date($('#toDate').val());       
         var idRoom = sessionStorage.getItem('key');
         $.ajax({
             url: 'https://localhost:44370/api/v1/room/' + idRoom,
@@ -253,7 +252,6 @@
             },
             success: function (res) {              
                 var id = "id" + Math.random().toString(16).slice(2);
-                console.log(res);
                 var oneroom = {
                     id: id,
                     name: res.TenPhong,
@@ -264,6 +262,7 @@
                 }
                 console.log(oneroom);
                 localStorage.setItem(id.toString(), JSON.stringify(oneroom));
+                alert("Đặt thành công vui lòng kiểm tra  lịch sử để thành toán !!!")
 
                
             },

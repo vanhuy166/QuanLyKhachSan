@@ -151,7 +151,6 @@
         success: function (res) {
             $("#listDichVu").empty();
             const len = res.length;
-            console.log(res);
             let table = '';
             for (var i = 0; i < len; ++i) {
                 table += `
@@ -161,11 +160,11 @@
                             <div class="hotel-room-body">
                                 <h3 class="heading mb-0"><a href="#">`+res[i].Ten+`</a></h3>
                                 <strong class="price">`+ res[i].Gia +` VNĐ</strong>
-<<<<<<< HEAD
+
                                 <p onclick="clickDv('`+ res[i].ID_DichVu +`')"><a   href= "@Url.Action("Eventsct", "Events")" class="btn btn-primary pill text-white px-4">Buy Now</a></p>
-=======
-                                <p><a href="#" class="btn btn-primary pill text-white px-4">Buy Now</a></p>
->>>>>>> ea51ab9e6a400a6792d913250e4bec752c0c9973
+
+
+
                             </div>
                         </div>
                     </div>
@@ -176,14 +175,9 @@
         fail: function (response) { }
 
     });
-<<<<<<< HEAD
     function clickDv(idDichvu) {
-        console.log("aaa" + idDichvu);
         sessionStorage.setItem('key1', idDichvu);
     }
 
 </script>
-=======
 
-</script>
->>>>>>> ea51ab9e6a400a6792d913250e4bec752c0c9973

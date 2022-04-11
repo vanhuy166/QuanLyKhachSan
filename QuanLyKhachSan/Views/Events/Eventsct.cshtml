@@ -15,7 +15,6 @@
 
 <script>
     var idDichvu = sessionStorage.getItem('key1');
-    alert(idDichvu);
 
     $.ajax({
         url: 'https://localhost:44370/api/v1/hotelServices/' + idDichvu,
@@ -28,7 +27,6 @@
         success: function (res) {
             $("#ctDichvu").empty();
             const len = res.length;
-            console.log(res);
             let table = '';
 
             table += `
@@ -113,7 +111,7 @@
                     type:"0"
                 }
                 localStorage.setItem(id.toString(), JSON.stringify(oneroom));
-
+                alert("Thêm thành công vui lòng kiểm tra  lịch sử để thành toán !!!")
 
             },
             fail: function (response) { }
