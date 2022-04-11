@@ -139,19 +139,19 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\login.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\flaticon.css" />
-    <Content Include="fonts\flaticon.html" />
-    <Content Include="fonts\Flaticon.svg" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="fonts\style.css" />
+    <Content Include="Styles\fonts\flaticon.css" />
+    <Content Include="Styles\fonts\flaticon.html" />
+    <Content Include="Styles\fonts\Flaticon.svg" />
+    <Content Include="Styles\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Styles\fonts\style.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="fonts\Flaticon.eot" />
-    <Content Include="fonts\Flaticon.ttf" />
-    <Content Include="fonts\Flaticon.woff" />
-    <Content Include="fonts\_flaticon.scss" />
+    <Content Include="Styles\fonts\Flaticon.eot" />
+    <Content Include="Styles\fonts\Flaticon.ttf" />
+    <Content Include="Styles\fonts\Flaticon.woff" />
+    <Content Include="Styles\fonts\_flaticon.scss" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -250,10 +250,10 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Styles\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Styles\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Styles\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Styles\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
