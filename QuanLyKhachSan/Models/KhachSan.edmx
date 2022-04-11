@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QuanLyKhachSanModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QuanLyKhachSanModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="DichVu">
           <Key>
             <PropertyRef Name="ID_DichVu" />
@@ -94,8 +94,8 @@
             <PropertyRef Name="ID_TK" />
           </Key>
           <Property Name="ID_TK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenTK" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="MatKhau" Type="varchar" MaxLength="256" Nullable="false" />
-          <Property Name="TenTK" Type="varchar" MaxLength="45" />
           <Property Name="Salt" Type="varchar" MaxLength="256" Nullable="false" />
           <Property Name="Anh" Type="varchar" MaxLength="256" />
         </EntityType>
@@ -124,7 +124,9 @@
           <Property Name="ID_ROLE" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="HD_DV_FK1">
-          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="HoaDon_DichVu" Type="Self.HoaDon_DichVu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="HoaDon">
@@ -136,7 +138,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="HD_DV_FK2">
-          <End Role="DichVu" Type="Self.DichVu" Multiplicity="1" />
+          <End Role="DichVu" Type="Self.DichVu" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="HoaDon_DichVu" Type="Self.HoaDon_DichVu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DichVu">
@@ -148,7 +152,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="HD_Phong_FK1">
-          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="HoaDon_Phong" Type="Self.HoaDon_Phong" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="HoaDon">
@@ -160,7 +166,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="HD_Phong_FK2">
-          <End Role="Phong" Type="Self.Phong" Multiplicity="1" />
+          <End Role="Phong" Type="Self.Phong" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="HoaDon_Phong" Type="Self.HoaDon_Phong" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Phong">
@@ -172,7 +180,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Phong_LoaiPhong_FK1">
-          <End Role="Phong" Type="Self.Phong" Multiplicity="1" />
+          <End Role="Phong" Type="Self.Phong" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Phong_LoaiPhong" Type="Self.Phong_LoaiPhong" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Phong">
@@ -184,7 +194,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Phong_LoaiPhong_FK2">
-          <End Role="LoaiPhong" Type="Self.LoaiPhong" Multiplicity="1" />
+          <End Role="LoaiPhong" Type="Self.LoaiPhong" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Phong_LoaiPhong" Type="Self.Phong_LoaiPhong" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="LoaiPhong">
@@ -196,7 +208,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="TK_HD_FK1">
-          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="1" />
+          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="TaiKhoan_HoaDon" Type="Self.TaiKhoan_HoaDon" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TaiKhoan">
@@ -208,7 +222,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="TK_HD_FK2">
-          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="TaiKhoan_HoaDon" Type="Self.TaiKhoan_HoaDon" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="HoaDon">
@@ -220,7 +236,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="TK_PH_FK1">
-          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="1" />
+          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="TaiKhoan_PhanHoi" Type="Self.TaiKhoan_PhanHoi" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TaiKhoan">
@@ -232,7 +250,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="TK_PH_FK2">
-          <End Role="PhanHoi" Type="Self.PhanHoi" Multiplicity="1" />
+          <End Role="PhanHoi" Type="Self.PhanHoi" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="TaiKhoan_PhanHoi" Type="Self.TaiKhoan_PhanHoi" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PhanHoi">
@@ -244,7 +264,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="TK_ROLE_FK1">
-          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="1" />
+          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="TaiKhoan_Role" Type="Self.TaiKhoan_Role" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TaiKhoan">
@@ -256,7 +278,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="TK_ROLE_FK2">
-          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Role" Type="Self.Role" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="TaiKhoan_Role" Type="Self.TaiKhoan_Role" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Role">
@@ -267,6 +291,37 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="QuanLyKhachSanModelStoreContainer">
           <EntitySet Name="DichVu" EntityType="Self.DichVu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
@@ -331,8 +386,7 @@
             <End Role="TaiKhoan_Role" EntitySet="TaiKhoan_Role" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QuanLyKhachSanModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -420,8 +474,8 @@
             <PropertyRef Name="ID_TK" />
           </Key>
           <Property Name="ID_TK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenTK" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="MatKhau" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TenTK" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="Salt" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Anh" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="HoaDons" Relationship="Self.TaiKhoan_HoaDon" FromRole="TaiKhoan" ToRole="HoaDon" />
@@ -429,7 +483,9 @@
           <NavigationProperty Name="Roles" Relationship="Self.TaiKhoan_Role" FromRole="TaiKhoan" ToRole="Role" />
         </EntityType>
         <Association Name="HD_Phong_FK1">
-          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="HoaDon_Phong" Type="Self.HoaDon_Phong" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="HoaDon">
@@ -441,7 +497,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="HD_Phong_FK2">
-          <End Role="Phong" Type="Self.Phong" Multiplicity="1" />
+          <End Role="Phong" Type="Self.Phong" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="HoaDon_Phong" Type="Self.HoaDon_Phong" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Phong">
@@ -510,7 +568,48 @@
             <End Role="TaiKhoan" EntitySet="TaiKhoans" />
             <End Role="Role" EntitySet="Roles" />
           </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(QuanLyKhachSanModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(QuanLyKhachSanModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -596,8 +695,8 @@
             <EntityTypeMapping TypeName="QuanLyKhachSanModel.TaiKhoan">
               <MappingFragment StoreEntitySet="TaiKhoan">
                 <ScalarProperty Name="ID_TK" ColumnName="ID_TK" />
-                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
                 <ScalarProperty Name="TenTK" ColumnName="TenTK" />
+                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
                 <ScalarProperty Name="Salt" ColumnName="Salt" />
                 <ScalarProperty Name="Anh" ColumnName="Anh" />
               </MappingFragment>
@@ -643,6 +742,30 @@
               <ScalarProperty Name="ID_ROLE" ColumnName="ID_ROLE" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="QuanLyKhachSanModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="QuanLyKhachSanModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="QuanLyKhachSanModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="QuanLyKhachSanModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QuanLyKhachSanModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="QuanLyKhachSanModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QuanLyKhachSanModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="QuanLyKhachSanModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="QuanLyKhachSanModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

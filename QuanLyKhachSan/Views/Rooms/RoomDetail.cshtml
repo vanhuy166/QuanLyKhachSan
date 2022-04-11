@@ -3,64 +3,154 @@
     ViewBag.Title = "RoomDetail";
     Layout = "~/Views/Shared/_LayoutHomes.cshtml";
 }
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
 <div class="site-section">
-    <div class="container">
+    <div class="container" id="chiTietPhong">
 
-
-        <div class="row align-items-center">
-            <div class="col-md-6 mb-5 mb-md-0">
-
-                <div class="img-border">
-                    <a href="https://vimeo.com/28959265" class="popup-vimeo image-play">
-                        <span class="icon-wrap">
-                            <span class="icon icon-play"></span>
-                        </span>
-                        <img src="~/Styles/images/img_2.jpg" alt="" class="img-fluid">
-                    </a>
-                </div>
-                <img src="~/Styles/images/img_1.jpg" alt="Image" class="img-fluid image-absolute">
-
-            </div>
-            <div class="col-md-5 ml-auto">
-                <div class="section-heading text-left">
-                    <h2 class="mb-5">Thông tin</h2>
-                </div>
-                <table style="width:100%;">
-                    <tr>
-                        <th>Phòng:</th>
-                        <td>Phòng 101</td>
-                    </tr>
-                    <tr>
-                        <th>Loại phòng:</th>
-                        <td>VIP</td>
-                    </tr>
-                    <tr>
-                        <th>Số giường:</th>
-                        <td>1 giường đơn</td>
-                    </tr>
-                    <tr>
-                        <th>Giá phòng:</th>
-                        <td>500.000VNĐ</td>
-                    </tr>
-
-                    <tr>
-                        <th>Ngày đến</th>
-                        <td> <input type="date" id="fromDate" name="fromDate" ></td>
-                    </tr>
-                    <tr>
-                        <th>Ngày đi</th>
-                        <td><input type="date" id="toDate" name="toDate"></td>
-                    </tr>
-                </table>
-
-                <br>
-                <p class="mb-4">Khách sạn Hoàng Hôn luôn mang vẻ đẹp hiện đại xen lẫn nét cổ kính. Đặt khách sạn sớm nhất để hưởng trọn ưu đãi, hứa hẹn một kì nghỉ với những ...</p>
-                <p>
-                    <a href="https://vimeo.com/28959265" class="btn btn-primary pill px-4  popup-vimeo text-uppercase btn btn-XemVideo">Xem Video <span class="icon-arrow-right small"></span></a>
-                    <button href="#" class="btn btn-primary pill text-white px-4 btn-DatPhong" id="btn-DatPhong" onclick="testbtn();">Đặt phòng</button>
-                </p>
-
-            </div>
-        </div>
     </div>
 </div>
+
+<script>
+    var idRoom = sessionStorage.getItem('key');
+
+    $.ajax({
+        url: 'https://localhost:44370/api/v1/room/' + idRoom,
+        method: 'GET',
+        contentType: 'json',
+        dataType: 'json',
+        error: function (res) {
+
+        },
+        success: function (res) {
+            $("#chiTietPhong").empty();
+            const len = res.length;
+            console.log(res);
+            let table = '';
+
+            table += `
+        <div class="row align-items-center">
+                <div class="col-md-6 mb-5 mb-md-0">
+
+                    <div class="img-border">
+                        <a href="https://vimeo.com/28959265" class="popup-vimeo image-play">
+                            <span class="icon-wrap">
+                                <span class="icon icon-play"></span>
+                            </span>
+                            <img src="/Styles/images/`+ res.Anh + `" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                    <img src="/Styles/images/`+ res.Anh + `" alt="Image" class="img-fluid image-absolute">
+
+                </div>
+                <div class="col-md-5 ml-auto">
+                    <div class="section-heading text-left">
+                        <h2 class="mb-5">Thông tin</h2>
+                    </div>
+                    <table style="width:100%;">
+                        <tr>
+                            <th>Phòng:</th>
+                            <td>`+ res.TenPhong + `</td>
+                        </tr>
+                        <tr>
+                            <th>Loại phòng:</th>
+                            <td>`+ res.LoaiPhongs[0].TenLoai + `</td>
+                        </tr>
+                        <tr>
+                            <th>Số giường:</th>
+                            <td>`+ res.LoaiPhongs[0].SoGiuong + `</td>
+                        </tr>
+                        <tr>
+                            <th>Giá phòng:</th>
+                            <td>`+ res.LoaiPhongs[0].Gia + ` VNĐ</td>
+                        </tr>
+
+                        <tr>
+                            <th>Ngày đến</th>
+                            <td> <input type="date" id="fromDate" name="fromDate" ></td>
+                        </tr>
+                        <tr>
+                            <th>Ngày đi</th>
+                            <td><input type="date" id="toDate" name="toDate"></td>
+                        </tr>
+                    </table>
+
+                    <br>
+                    <p class="mb-4">Khách sạn Hoàng Hôn luôn mang vẻ đẹp hiện đại xen lẫn nét cổ kính. Đặt khách sạn sớm nhất để hưởng trọn ưu đãi, hứa hẹn một kì nghỉ với những ...</p>
+                    <p>
+                        <a href="https://vimeo.com/28959265" class="btn btn-primary pill px-4  popup-vimeo text-uppercase btn btn-XemVideo">Xem Video <span class="icon-arrow-right small"></span></a>
+                        <button href="#" class="btn btn-primary pill text-white px-4 btn-DatPhong" id="btn-DatPhong" onclick="testbtn();">Đặt phòng</button>
+                    </p>
+
+                </div>
+            </div>
+            `;
+
+            document.getElementById('chiTietPhong').innerHTML = table;
+        },
+        fail: function (response) { }
+
+    });
+</script>
+
+
+<script>
+    $('#fromDate').change(function () {
+        var fromDate = new Date($('#fromDate').val());
+        var today = new Date();
+        var dd = fromDate.getDate();
+        var mm = fromDate.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
+        var yyyy = fromDate.getFullYear();
+        if (dd < 10) {
+            dd = '0' + dd
+        }
+        if (mm < 10) {
+            mm = '0' + mm
+        }
+
+        today = yyyy + '-' + mm + '-' + dd;
+
+        $('#toDate').attr('min', today);
+
+    });
+
+    $(document).ready(function () {
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
+        var yyyy = today.getFullYear();
+        if (dd < 10) {
+            dd = '0' + dd
+        }
+        if (mm < 10) {
+            mm = '0' + mm
+        }
+
+        today = yyyy + '-' + mm + '-' + dd;
+
+        $('#fromDate').attr('min', today);
+
+        $('#fromDate').attr('value', today);
+        $('#toDate').attr('value', today);
+
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var mediaElements = document.querySelectorAll('video, audio'), total = mediaElements.length;
+
+        for (var i = 0; i < total; i++) {
+            new MediaElementPlayer(mediaElements[i], {
+                pluginPath: 'https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/',
+                shimScriptAccess: 'always',
+                success: function () {
+                    var target = document.body.querySelectorAll('.player'), targetTotal = target.length;
+                    for (var j = 0; j < targetTotal; j++) {
+                        target[j].style.visibility = 'visible';
+                    }
+                }
+            });
+        }
+    });
+</script>
