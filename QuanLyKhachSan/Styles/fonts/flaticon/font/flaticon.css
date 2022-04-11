@@ -1,0 +1,48 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 05/12/2018 13:24
+  	*/
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+  font-family: Flaticon;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.flaticon-pool:before { content: "\f100"; }
+.flaticon-desk:before { content: "\f101"; }
+.flaticon-exit:before { content: "\f102"; }
+.flaticon-parking:before { content: "\f103"; }
+.flaticon-hair-dryer:before { content: "\f104"; }
+.flaticon-minibar:before { content: "\f105"; }
+.flaticon-drink:before { content: "\f106"; }
+.flaticon-tray:before { content: "\f107"; }
+.flaticon-cab:before { content: "\f108"; }
+.flaticon-tv:before { content: "\f109"; }

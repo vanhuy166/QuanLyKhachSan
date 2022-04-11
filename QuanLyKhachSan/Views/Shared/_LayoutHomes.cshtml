@@ -5,7 +5,7 @@
     <title>Hoang Hon &mdash; Hotel</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <link href="~/Styles/fonts/icomoon/style.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Work+Sans:300,400,700" rel="stylesheet">
     <link href="~/Styles/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="~/fonts/style.css" rel="stylesheet" />
@@ -61,7 +61,7 @@
                     <div class="py-1">
                         <div class="row align-items-center">
                             <div class="col-2">
-                                <h2 class="mb-0 site-logo"><a href="index.html">ROOM CO</a></h2>
+                                <h2 class="mb-0 site-logo"><a href="@Url.Action("Home","Home")">ROOM Co</a></h2>
                             </div>
                             <div class="col-10">
                                 <nav class="site-navigation text-right" role="navigation">
@@ -82,19 +82,11 @@
                                                     <li><a href="@Url.Action("ListRooms","Rooms")">Phòng đơn</a></li>
                                                     <li><a href="@Url.Action("ListRooms","Rooms")">Phòng đôi</a></li>
                                                     <li><a href="@Url.Action("ListRooms","Rooms")">Phòng gia đình</a></li>
-                                                    <li class="has-children">
-                                                        <a href="@Url.Action("ListRooms","Rooms")">Dịch vụ</a>
-                                                        <ul class="dropdown">
-                                                            <li><a href="@Url.Action("ListRooms","Rooms")">Phòng cao cấp</a></li>
-                                                            <li><a href="@Url.Action("ListRooms","Rooms")">Tắm hơi</a></li>
-                                                            <li><a href="@Url.Action("ListRooms","Rooms")">Ăn uống</a></li>
-
-                                                        </ul>
-                                                    </li>
+                                                  
 
                                                 </ul>
                                             </li>
-                                            <li><a href="@Url.Action("Events","Events")">Sự kiện</a></li>
+                                            <li><a href="@Url.Action("Events","Events")">Dịch vụ</a></li>
                                             <li><a href="@Url.Action("About","Home")">Thông tin</a></li>
                                             <li><a href="@Url.Action("FeedBack","FeedBack")">Liên hệ</a></li>
 

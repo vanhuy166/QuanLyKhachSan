@@ -356,6 +356,16 @@
     <Content Include="Styles\css\owl.carousel.min.css" />
     <Content Include="Styles\css\owl.theme.default.min.css" />
     <Content Include="Styles\css\style.css" />
+    <Content Include="Styles\fonts\flaticon\backup.txt" />
+    <Content Include="Styles\fonts\flaticon\font\flaticon.css" />
+    <Content Include="Styles\fonts\flaticon\font\flaticon.html" />
+    <Content Include="Styles\fonts\flaticon\font\Flaticon.svg" />
+    <Content Include="Styles\fonts\icomoon\demo-files\demo.css" />
+    <Content Include="Styles\fonts\icomoon\demo-files\demo.js" />
+    <Content Include="Styles\fonts\icomoon\demo.html" />
+    <Content Include="Styles\fonts\icomoon\fonts\icomoon.svg" />
+    <Content Include="Styles\fonts\icomoon\Read Me.txt" />
+    <Content Include="Styles\fonts\icomoon\style.css" />
     <Content Include="Styles\images\about_2.jpg" />
     <Content Include="Styles\images\about_3.jpg" />
     <Content Include="Styles\images\bia.png" />
@@ -423,6 +433,16 @@
     <Content Include="Styles\scss\_site-base.scss" />
     <Content Include="Styles\scss\_site-blocks.scss" />
     <Content Include="Styles\scss\_site-navbar.scss" />
+    <Content Include="Styles\fonts\.DS_Store" />
+    <Content Include="Styles\fonts\flaticon\font\Flaticon.eot" />
+    <Content Include="Styles\fonts\flaticon\font\Flaticon.ttf" />
+    <Content Include="Styles\fonts\flaticon\font\Flaticon.woff" />
+    <Content Include="Styles\fonts\flaticon\font\_flaticon.scss" />
+    <Content Include="Styles\fonts\flaticon\license\license.pdf" />
+    <Content Include="Styles\fonts\icomoon\fonts\icomoon.eot" />
+    <Content Include="Styles\fonts\icomoon\fonts\icomoon.ttf" />
+    <Content Include="Styles\fonts\icomoon\fonts\icomoon.woff" />
+    <Content Include="Styles\fonts\icomoon\selection.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
