@@ -1,6 +1,8 @@
-﻿using System;
+﻿using QuanLyKhachSan.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 
@@ -10,7 +12,8 @@ namespace QuanLyKhachSan.Controllers
     {
         // GET: Rooms
         public ActionResult ListRooms()
-        {
+        {            
+
             return View();
         }
 

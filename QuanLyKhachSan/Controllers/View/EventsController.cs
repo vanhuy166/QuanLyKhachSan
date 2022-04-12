@@ -13,5 +13,10 @@ namespace QuanLyKhachSan.Controllers
         {
             return View();
         }
+        public ActionResult Eventsct()
+        {
+            return View();
+        }
     }
+
 }

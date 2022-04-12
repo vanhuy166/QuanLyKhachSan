@@ -19,13 +19,14 @@ namespace QuanLyKhachSan.Controllers
         public HttpResponseMessage GetPhongs()
         {
             List<Phong> listPhong = ks.Phongs.ToList();
+            
             var response = Request.CreateResponse(
                 HttpStatusCode.OK, listPhong,
                 Configuration.Formatters.JsonFormatter);
 
             return response;
         }
-
+       
         [AllowAnonymous]
         [HttpGet]
         [Route("byType/{idLoai:int}")]
