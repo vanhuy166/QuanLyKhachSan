@@ -248,6 +248,67 @@
 
 
 
+<<<<<<< HEAD
+=======
+<script>
+    $('#fromDate').change(function () {
+        var fromDate = new Date($('#fromDate').val());
+        var today = new Date();
+        var dd = fromDate.getDate();
+        var mm = fromDate.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
+        var yyyy = fromDate.getFullYear();
+        if (dd < 10) {
+            dd = '0' + dd
+        }
+        if (mm < 10) {
+            mm = '0' + mm
+        }
+
+        today = yyyy + '-' + mm + '-' + dd;
+
+        $('#toDate').attr('min', today);
+
+    });
+
+    $(document).ready(function () {
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
+        var yyyy = today.getFullYear();
+        if (dd < 10) {
+            dd = '0' + dd
+        }
+        if (mm < 10) {
+            mm = '0' + mm
+        }
+
+        today = yyyy + '-' + mm + '-' + dd;
+
+        $('#fromDate').attr('min', today);
+
+        $('#fromDate').attr('value', today);
+        $('#toDate').attr('value', today);
+
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var mediaElements = document.querySelectorAll('video, audio'), total = mediaElements.length;
+
+        for (var i = 0; i < total; i++) {
+            new MediaElementPlayer(mediaElements[i], {
+                pluginPath: 'https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/',
+                shimScriptAccess: 'always',
+                success: function () {
+                    var target = document.body.querySelectorAll('.player'), targetTotal = target.length;
+                    for (var j = 0; j < targetTotal; j++) {
+                        target[j].style.visibility = 'visible';
+                    }
+                }
+            });
+        }   
+    });
+</script>
+>>>>>>> master
 
 
 </body>
