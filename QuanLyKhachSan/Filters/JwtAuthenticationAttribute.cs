@@ -68,16 +68,16 @@ namespace QuanLyKhachSan.Filters
             
             TaiKhoan tk = ks.TaiKhoans.SingleOrDefault(
                 acc => acc.TenTK.Equals(thisUsername));
+
             if (tk == null)
                 return false;
-                
 
             List<Role> userRoles = tk.Roles.ToList();
             foreach (var role in roleClaims)
             {
                 string roleValue = role.Value;
                 Role actualRole = userRoles.SingleOrDefault(
-                    thisRole => thisRole.Equals(roleValue));
+                    thisRole => thisRole.Ten.Equals(roleValue));
 
                 if (actualRole == null)
                     return false;
