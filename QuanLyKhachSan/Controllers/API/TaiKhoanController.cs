@@ -37,7 +37,7 @@ namespace QuanLyKhachSan.Controllers
                 }
                 else
                 {
-                    var token = JwtManager.GenerateToken(tk.TenTK);
+                    var token = JwtManager.GenerateToken(taiKhoan.TenTK, taiKhoan.Roles.ToList());
                     request.Headers.Add("Authorization", "Bearer " + token);
                 }
             }
