@@ -1,4 +1,5 @@
-﻿using QuanLyKhachSan.Models;
+﻿using QuanLyKhachSan.Filters;
+using QuanLyKhachSan.Models;
 using QuanLyKhachSan.Services;
 using System.Collections.Generic;
 using System.Linq;
@@ -77,39 +78,93 @@ namespace QuanLyKhachSan.Controllers
             return response;
         }
 
-        //[System.Web.Http.HttpPost]
-        //[System.Web.Http.Route("add")]
-        //public HttpResponseMessage AddPhong([FromBody] Phong newPhong)
-        //{
-        //    Phong phong = ks.Phongs.SingleOrDefault(
-        //        p => p.ID_Phong == newPhong.ID_Phong);
-        //    var response = Request.CreateResponse();
-
-        //    if (phong == null)
-        //    {
-        //        ks.Phongs.Add(newPhong);
-        //        ks.SaveChanges();
-        //        response.StatusCode = HttpStatusCode.Created;
-        //    } else
-        //    {
-        //        response.StatusCode = HttpStatusCode.Forbidden;
-        //    }
-
-        //    return response;
-        //}
-
         [AllowAnonymous]
         [HttpGet]
-        [Route("{id:int}")]
-        public HttpResponseMessage getPhong(int id)
+        [Route("{idPhong:int}")]
+        public HttpResponseMessage getPhong(int idPhong)
         {
             Phong phong = ks.Phongs.SingleOrDefault(
-                p => p.ID_Phong == id);
+                p => p.ID_Phong == idPhong);
             var response = Request.CreateResponse(HttpStatusCode.OK,
                 phong, Configuration.Formatters.JsonFormatter);
 
             if (phong == null)
                 response.StatusCode = HttpStatusCode.NotFound;
+
+            return response;
+        }
+
+        [JwtAuthentication]
+        [Authorize(Roles = "admin")]
+        [HttpPut]
+        [Route("edit")]
+        public HttpResponseMessage editPhong(int idPhong, int idLoai)
+        {
+            Phong phong = ks.Phongs.SingleOrDefault(
+                p => p.ID_Phong == idPhong);
+            var response = Request.CreateResponse(HttpStatusCode.OK);
+
+            if (phong == null)
+                response.StatusCode = HttpStatusCode.NotFound;
+
+            if (phong.LoaiPhongs.FirstOrDefault().ID_LoaiPhong != idLoai)
+            {
+                LoaiPhong loaiPhong = ks.LoaiPhongs.FirstOrDefault(
+                    p => p.ID_LoaiPhong == idLoai);
+
+                if (loaiPhong == null)
+                    response.StatusCode = HttpStatusCode.BadRequest;
+
+                phong.LoaiPhongs.Clear();
+                phong.LoaiPhongs.Add(loaiPhong);
+                ks.SaveChanges();
+            }
+
+            return response;
+        }
+
+        [JwtAuthentication]
+        [Authorize(Roles = "admin")]
+        [HttpPost]
+        [Route("add")]
+        public HttpResponseMessage AddPhong([FromBody] Phong newPhong)
+        {
+            Phong phong = ks.Phongs.SingleOrDefault(
+                p => p.ID_Phong == newPhong.ID_Phong);
+            var response = Request.CreateResponse(HttpStatusCode.Created);
+
+            if (phong == null)
+            {
+                ks.Phongs.Add(newPhong);
+                ks.SaveChanges();
+            }
+            else
+            {
+                response.StatusCode = HttpStatusCode.Conflict;
+            }
+
+            return response;
+        }
+
+        [JwtAuthentication]
+        [Authorize(Roles = "admin")]
+        [HttpDelete]
+        [Route("delete")]
+        public HttpResponseMessage deletePhong(int idPhong)
+        {
+            Phong phong = ks.Phongs.SingleOrDefault(
+                p => p.ID_Phong == idPhong);
+            var response = Request.CreateResponse(HttpStatusCode.OK);
+
+            if (phong == null)
+            {
+                response.StatusCode = HttpStatusCode.NotFound;
+            }
+            else
+            {
+                ks.Phongs.Remove(phong);
+                ks.SaveChanges();
+            }
 
             return response;
         }
