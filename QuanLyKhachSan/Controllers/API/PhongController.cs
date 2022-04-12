@@ -1,5 +1,6 @@
 ﻿using QuanLyKhachSan.Filters;
 using QuanLyKhachSan.Models;
+using QuanLyKhachSan.Models.Requests;
 using QuanLyKhachSan.Services;
 using System.Collections.Generic;
 using System.Linq;
@@ -127,14 +128,27 @@ namespace QuanLyKhachSan.Controllers
         [Authorize(Roles = "admin")]
         [HttpPost]
         [Route("add")]
-        public HttpResponseMessage AddPhong([FromBody] Phong newPhong)
+        public HttpResponseMessage AddPhong([FromBody] PhongRequest phongRequest)
         {
             Phong phong = ks.Phongs.SingleOrDefault(
-                p => p.ID_Phong == newPhong.ID_Phong);
+                p => p.TenPhong.Equals(phongRequest.TenPhong));
             var response = Request.CreateResponse(HttpStatusCode.Created);
+
+            LoaiPhong loaiPhong = ks.LoaiPhongs.SingleOrDefault(
+                lp => lp.ID_LoaiPhong == phongRequest.ID_LoaiPhong);
+
+            if (loaiPhong == null)
+            {
+                response.StatusCode = HttpStatusCode.BadRequest;
+                return response;
+            }
 
             if (phong == null)
             {
+                Phong newPhong = new Phong();
+                newPhong.TenPhong = phongRequest.TenPhong;
+                newPhong.Anh = phongRequest.Anh;
+                newPhong.LoaiPhongs.Add(loaiPhong);
                 ks.Phongs.Add(newPhong);
                 ks.SaveChanges();
             }

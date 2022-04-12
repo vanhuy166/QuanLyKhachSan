@@ -266,6 +266,7 @@
       <DependentUpon>KhachSan.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Requests\HoaDonRequest.cs" />
+    <Compile Include="Models\Requests\PhongRequest.cs" />
     <Compile Include="Models\Responses\PhanHoiResponse.cs" />
     <Compile Include="Models\Role.cs">
       <DependentUpon>KhachSan.tt</DependentUpon>
