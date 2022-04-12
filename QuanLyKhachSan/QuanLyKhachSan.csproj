@@ -211,6 +211,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\API\PhanHoiController.cs" />
     <Compile Include="Controllers\View\AdminController.cs" />
     <Compile Include="Controllers\API\DichVuController.cs" />
     <Compile Include="Controllers\View\EventsController.cs" />
@@ -265,6 +266,7 @@
       <DependentUpon>KhachSan.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Requests\HoaDonRequest.cs" />
+    <Compile Include="Models\Responses\PhanHoiResponse.cs" />
     <Compile Include="Models\Role.cs">
       <DependentUpon>KhachSan.tt</DependentUpon>
     </Compile>
@@ -453,6 +455,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\PhanHoi\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
