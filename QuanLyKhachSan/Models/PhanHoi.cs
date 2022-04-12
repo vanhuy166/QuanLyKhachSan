@@ -9,6 +9,7 @@
 
 namespace QuanLyKhachSan.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -24,6 +25,7 @@ namespace QuanLyKhachSan.Models
         public string NoiDung { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [JsonIgnore]
         public virtual ICollection<TaiKhoan> TaiKhoans { get; set; }
     }
 }

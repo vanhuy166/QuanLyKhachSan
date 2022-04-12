@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Microsoft.IdentityModel.Tokens;
+using QuanLyKhachSan.Models;
+using System;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Microsoft.IdentityModel.Tokens;
 
 namespace QuanLyKhachSan.Jwt
 {
@@ -15,18 +17,23 @@ namespace QuanLyKhachSan.Jwt
         /// </summary>
         private const string Secret = "THIS_IS_THE_SUPER_DUPER_SECRET_KEY";
 
-        public static string GenerateToken(string username, int expireDays = 7)
+        public static string GenerateToken(string username, List<Role> roles, int expireDays = 7)
         {
             var symmetricKey = Encoding.ASCII.GetBytes(Secret);
             var tokenHandler = new JwtSecurityTokenHandler();
 
             var now = DateTime.UtcNow;
+            var subject = new ClaimsIdentity(new[]
+                        {
+                            new Claim(ClaimTypes.Name, username),
+                        });
+
+            foreach (var role in roles)
+                subject.AddClaim(new Claim(ClaimTypes.Role, role.Ten));
+
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new ClaimsIdentity(new[]
-                        {
-                            new Claim(ClaimTypes.Name, username)
-                        }),
+                Subject = subject,
 
                 Expires = now.AddDays(Convert.ToDouble(expireDays)),
 
