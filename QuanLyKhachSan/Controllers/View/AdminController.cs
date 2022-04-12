@@ -12,5 +12,10 @@ namespace QuanLyKhachSan.Controllers
         {
             return View();
         }
+
+        public ActionResult ChiTietPhong()
+        {
+            return View();
+        }
     }
 }

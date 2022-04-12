@@ -4,6 +4,9 @@
     Layout = "~/Views/Shared/_LayoutHomes.cshtml";
 }
 
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+
 <div class="container">
     <div class="row">
         <div class="col-md-6 mx-auto text-center mb-5 section-heading">
@@ -12,54 +15,10 @@
             <button type="button" class="btn btn-info ">Thêm mới</button>
         </div>
     </div>
+    <div class="row" id="listRoomEdit">
+    </div>
     <div class="row">
-        <div class="col-md-6 col-lg-4 mb-5">
-            <div class="hotel-room text-center">
-                <a href="#" class="d-block mb-0 thumbnail"><img src="~/Styles/images/img_1.jpg" alt="Image" class="img-fluid"></a>
-                <div class="hotel-room-body">
-                    <h3 class="heading mb-0"><a href="#">Standard Room</a></h3>
-                    <strong class="price">$350.00 / per night</strong>
-                    <br />
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-danger">Xóa</button>
-                        <button type="button" class="btn btn-warning">Sửa</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-4 mb-5">
-            <div class="hotel-room text-center">
-                <a href="#" class="d-block mb-0 thumbnail"><img src="~/Styles/images/img_2.jpg" alt="Image" class="img-fluid"></a>
-                <div class="hotel-room-body">
-                    <h3 class="heading mb-0"><a href="#">Family Room</a></h3>
-                    <strong class="price">$400.00 / per night</strong>
-                    <br />
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-danger">Xóa</button>
-                        <button type="button" class="btn btn-warning">Sửa</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-4 mb-5">
-            <div class="hotel-room text-center">
-                <a href="#" class="d-block mb-0 thumbnail"><img src="~/Styles/images/img_3.jpg" alt="Image" class="img-fluid"></a>
-                <div class="hotel-room-body">
-                    <h3 class="heading mb-0"><a href="#">Single Room</a></h3>
-                    <strong class="price">$255.00 / per night</strong>
-                    <br />
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-danger">Xóa</button>
-                        <button type="button" class="btn btn-warning">Sửa</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-
-        <div class="row mt-5">
+        <div class="row mt-5" style=" margin: 0 0 20px 50%; transform: translateX(-50%);">
             <div class="col-md-12 text-center">
                 <div class="site-block-27">
                     <ul>
@@ -77,4 +36,48 @@
     </div>
 </div>
 
+
+<script>
+     $.ajax({
+         url: 'https://localhost:44370/api/v1/room/all',
+            method: 'GET',
+            contentType: 'json',
+            dataType: 'json',
+            error: function (res) {
+
+            },
+         success: function (res) {
+             $("#listRoomEdit").empty();
+                const len = res.length;
+                console.log(res);
+                let table = '';
+                for (var i = 0; i < len; ++i) {
+                    table += `
+                    <div class="col-md-6 col-lg-4 mb-5" onclick = "clickRoomEdit('`+ res[i].ID_Phong +`');">
+                        <div class="hotel-room text-center">
+                            <a  class="d-block mb-0 thumbnail"><img src="/Styles/images/`+ res[i].Anh + `" alt="Image" class="img-fluid"></a>
+                            <div class="hotel-room-body">
+                                <h3 class="heading mb-0"><a>`+ res[i].TenPhong + `</a></h3>
+                                <strong class="price">`+ res[i].LoaiPhongs[0].Gia + ` VNĐ/ per night</strong>
+                                <br />
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-danger">Xóa</button>
+                                    <button type="button" class="btn btn-warning"><a href="@Url.Action("ChiTietPhong", "Admin")" style="color: black;"> Sửa </a></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    `;
+                }
+             document.getElementById('listRoomEdit').innerHTML = table;
+            },
+            fail: function (response) { }
+
+     });
+
+    function clickRoomEdit(idRoom) {
+        sessionStorage.setItem('keyRoomEdit', idRoom);
+    }
+</script>
 
