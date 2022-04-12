@@ -33,7 +33,7 @@ namespace QuanLyKhachSan.Controllers
         public HttpResponseMessage LayPhongTheoLoai(int idLoai)
         {
             List<Phong> listPhong = ks.Phongs.Where(
-                p => p.LoaiPhongs.First().ID_LoaiPhong == idLoai).ToList();
+                p => p.LoaiPhongs.FirstOrDefault().ID_LoaiPhong == idLoai).ToList();
             var response = Request.CreateResponse(HttpStatusCode.OK,
                 listPhong, Configuration.Formatters.JsonFormatter);
 
@@ -49,8 +49,8 @@ namespace QuanLyKhachSan.Controllers
         public HttpResponseMessage LayPhongTheoGia(double from, double to)
         {
             List<Phong> listPhong = ks.Phongs.Where(
-                p => p.LoaiPhongs.First().Gia >= from &&
-                     p.LoaiPhongs.First().Gia <= to).ToList();
+                p => p.LoaiPhongs.FirstOrDefault().Gia >= from &&
+                     p.LoaiPhongs.FirstOrDefault().Gia <= to).ToList();
             var response = Request.CreateResponse(HttpStatusCode.OK,
                 listPhong, Configuration.Formatters.JsonFormatter);
 
@@ -66,8 +66,8 @@ namespace QuanLyKhachSan.Controllers
         public HttpResponseMessage LayPhongTheoSoGiuong(int from, int to)
         {
             List<Phong> listPhong = ks.Phongs.Where(
-                p => p.LoaiPhongs.First().SoGiuong >= from &&
-                     p.LoaiPhongs.First().SoGiuong <= to).ToList();
+                p => p.LoaiPhongs.FirstOrDefault().SoGiuong >= from &&
+                     p.LoaiPhongs.FirstOrDefault().SoGiuong <= to).ToList();
             var response = Request.CreateResponse(HttpStatusCode.OK,
                 listPhong, Configuration.Formatters.JsonFormatter);
 
