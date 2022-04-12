@@ -17,5 +17,10 @@ namespace QuanLyKhachSan.Controllers
         {
             return View();
         }
+
+        public ActionResult ThemPhong()
+        {
+            return View();
+        }
     }
 }

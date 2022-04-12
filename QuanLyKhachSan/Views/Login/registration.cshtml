@@ -4,6 +4,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+
 <div class="signup-form ">
     <div class="wrapper-2">
         <div class="form-title">Sign up today!</div>
@@ -12,7 +15,7 @@
                 <p class="content-item">
                     <label>
                         full name
-                        <input type="text" placeholder="Tran tam " required>
+                        <input id="usernameDK" type="text" placeholder="Tran tam " required>
                     </label>
                 </p>
 
@@ -27,16 +30,43 @@
 
                     <label>
                         password
-                        <input type="password" placeholder="*****" name="psw" required>
+                        <input id="passwordDK" type="password" placeholder="pass" name="psw" required>
                     </label>
                 </p>
 
-
-                <button type="submit" class="signup">sign up </button>
-                <a  href="@Url.Action("Login","Login")" class="login">login</a>
             </form>
+            <button id="signup" class="signup">sign up</button>
+            <a href="@Url.Action("Login","Login")" class="login">login</a>
         </div>
     </div>
 
 </div>
+
+
+<script>
+    $(document).ready(function () {
+        $("#signup").click(function () {
+
+            var data = {
+                "TenTK": $("#usernameDK").val(),
+                "MatKhau": $("#passwordDK").val(),
+
+            };
+
+            console.log(data);
+            $.ajax({
+                url: 'https://localhost:44370/api/v1/account/register',
+                type: 'POST',
+                data: data,
+                error: function (err) {
+                    console.log('Error!', err)
+                },
+                success: function (data) {
+                    alert("Đăng ký thành công!!!");
+                    window.location = "https://localhost:44370/Login/Login";
+                }
+            });
+        });
+    });
+</script>
 

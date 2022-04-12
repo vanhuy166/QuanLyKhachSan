@@ -1,5 +1,5 @@
 function login() {
-      @URL.Action("Home","Home")
+      @url.action("home","home")
    
   }
   

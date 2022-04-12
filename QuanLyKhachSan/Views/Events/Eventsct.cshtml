@@ -65,7 +65,7 @@
 
                         <tr>
                             <th>Số Lượng</th>
-                            <td> <input type="number" id="sl" name="fromDate" value = "1" ></td>
+                            <td> <input type="number" id="sl" name="fromDate" value = "1" min="1"></td>
                         </tr>
                         
                     </table>
@@ -90,6 +90,7 @@
 
 <script>
     function addbtn() {
+        var token = localStorage.getItem("token");
         var sl = $('#sl').val();
         var iddichvu = sessionStorage.getItem('key1');
         $.ajax({
@@ -104,6 +105,7 @@
                 var id = "id" + Math.random().toString(16).slice(2);
                 var oneroom = {
                     id: id,
+                    username: parseJwt(token).unique_name,
                     name: res.Ten,
                     price: res.Gia,
                     ing: res.Anh,

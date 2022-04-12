@@ -4,6 +4,7 @@
     Layout = "~/Views/Shared/_LayoutHomes.cshtml";
 }
 
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
 
 <div class="site-section site-section-sm">
     <div class="container">
@@ -17,15 +18,13 @@
                             <textarea name="message" id="message" cols="30" rows="5" class="form-control" placeholder="Say hello to us"></textarea>
                         </div>
                     </div>
-
-                    <div class="row form-group">
-                        <div class="col-md-12">
-                            <input type="submit" value="Send Message" class="btn btn-primary pill px-4 py-2">
-                        </div>
-                    </div>
-
-
                 </form>
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <button style="float:right; margin-right:40px;" class="btn btn-primary pill px-4 py-2" onclick="addFeedback()">Send Message</button>
+                    </div>
+                </div>
+
             </div>
 
             <div class="col-lg-4">
@@ -46,3 +45,34 @@
         </div>
     </div>
 </div>
+
+<script>
+    function addFeedback() {
+
+        if ($('#message').val()) {
+            var headers = "Bearer " + localStorage.getItem("token");
+
+            $.ajax({
+                url: 'https://localhost:44370/api/v1/feedback/add',
+                headers: {
+                    "Authorization": headers
+                },
+                type: 'POST',
+                data: {
+                    "NoiDung": $('#message').val()
+                },
+                error: function (err) {
+                    console.log('Error!', err)
+                },
+                success: function (data) {
+                    alert("Cảm ơn ý kiến đóng góp của quý khách!!");
+                    window.location = "https://localhost:44370/Home/Home";
+                }
+            });
+        }
+        else {
+            alert("Vui lòng thêm ý kiến đóng góp!!");
+        }
+        
+    }
+</script>

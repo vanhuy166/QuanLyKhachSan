@@ -6,13 +6,12 @@
 
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 
-
 <div class="container">
     <div class="row">
         <div class="col-md-6 mx-auto text-center mb-5 section-heading">
             <h2 class="mb-5">List Room</h2>
             <br />
-            <button type="button" class="btn btn-info ">Thêm mới</button>
+            <button type="button" class="btn btn-info" ><a href="@Url.Action("ThemPhong","Admin")" style="color:#fff">Thêm mới</a></button>
         </div>
     </div>
     <div class="row" id="listRoomEdit">
@@ -49,19 +48,18 @@
          success: function (res) {
              $("#listRoomEdit").empty();
                 const len = res.length;
-                console.log(res);
                 let table = '';
                 for (var i = 0; i < len; ++i) {
                     table += `
                     <div class="col-md-6 col-lg-4 mb-5" onclick = "clickRoomEdit('`+ res[i].ID_Phong +`');">
                         <div class="hotel-room text-center">
-                            <a  class="d-block mb-0 thumbnail"><img src="/Styles/images/`+ res[i].Anh + `" alt="Image" class="img-fluid"></a>
+                            <a  class="d-block mb-0 thumbnail" style="height:200px;"><img style="height:200px" src="/Styles/images/`+ res[i].Anh + `" alt="Image" class="img-fluid"></a>
                             <div class="hotel-room-body">
                                 <h3 class="heading mb-0"><a>`+ res[i].TenPhong + `</a></h3>
                                 <strong class="price">`+ res[i].LoaiPhongs[0].Gia + ` VNĐ/ per night</strong>
                                 <br />
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-danger">Xóa</button>
+                                    <button type="button" class="btn btn-danger" onclick="deleteRoom(\'`+ res[i].ID_Phong +`\');">Xóa</button>
                                     <button type="button" class="btn btn-warning"><a href="@Url.Action("ChiTietPhong", "Admin")" style="color: black;"> Sửa </a></button>
                                 </div>
                             </div>
@@ -75,9 +73,34 @@
             fail: function (response) { }
 
      });
+    https://localhost:44370/api/v1/room/delete?idPhong=20
+
 
     function clickRoomEdit(idRoom) {
         sessionStorage.setItem('keyRoomEdit', idRoom);
+    }
+
+    function deleteRoom(idRoom) {
+        if (confirm('bạn có muốn xóa không?')) {
+            var url = 'https://localhost:44370/api/v1/room/delete?idPhong=' + idRoom;
+            var headers = "Bearer " + localStorage.getItem("token");
+            $.ajax({
+                url: url,
+                headers: {
+                    "Authorization": headers
+                },
+                type: 'DELETE',
+                error: function (err) {
+                    console.log('Error!', err)
+                },
+                success: function (data) {
+                    alert("Xóa thành công!!!");
+                    window.location = "https://localhost:44370/Admin/EdipRoom";
+                }
+            });
+        }
+
+       
     }
 </script>
 

@@ -99,27 +99,40 @@ namespace QuanLyKhachSan.Controllers
         [Authorize(Roles = "admin")]
         [HttpPut]
         [Route("edit")]
-        public HttpResponseMessage editPhong(int idPhong, int idLoai)
+        public HttpResponseMessage editPhong(int idPhong,string Ten, int idLoai,string img)
         {
             Phong phong = ks.Phongs.SingleOrDefault(
                 p => p.ID_Phong == idPhong);
+            
             var response = Request.CreateResponse(HttpStatusCode.OK);
 
             if (phong == null)
                 response.StatusCode = HttpStatusCode.NotFound;
 
-            if (phong.LoaiPhongs.FirstOrDefault().ID_LoaiPhong != idLoai)
-            {
-                LoaiPhong loaiPhong = ks.LoaiPhongs.FirstOrDefault(
+            //if (phong.LoaiPhongs.FirstOrDefault().ID_LoaiPhong != idLoai)
+            //{
+            //    LoaiPhong loaiPhong = ks.LoaiPhongs.FirstOrDefault(
+            //        p => p.ID_LoaiPhong == idLoai);
+
+            //    if (loaiPhong == null)
+            //        response.StatusCode = HttpStatusCode.BadRequest;
+
+            //    phong.LoaiPhongs.Clear();
+            //    phong.LoaiPhongs.Add(loaiPhong);
+            //    phong.Anh = img;
+            //    ks.SaveChanges();
+            //}
+            LoaiPhong loaiPhong = ks.LoaiPhongs.FirstOrDefault(
                     p => p.ID_LoaiPhong == idLoai);
 
-                if (loaiPhong == null)
-                    response.StatusCode = HttpStatusCode.BadRequest;
+            if (loaiPhong == null)
+                response.StatusCode = HttpStatusCode.BadRequest;
 
-                phong.LoaiPhongs.Clear();
-                phong.LoaiPhongs.Add(loaiPhong);
-                ks.SaveChanges();
-            }
+            phong.LoaiPhongs.Clear();
+            phong.LoaiPhongs.Add(loaiPhong);
+            phong.TenPhong = Ten;
+            phong.Anh = img;
+            ks.SaveChanges();
 
             return response;
         }

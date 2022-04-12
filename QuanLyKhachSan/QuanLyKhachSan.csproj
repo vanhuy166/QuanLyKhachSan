@@ -394,10 +394,16 @@
     <Content Include="Styles\images\img_7.jpg" />
     <Content Include="Styles\images\massage.png" />
     <Content Include="Styles\images\pepsi.png" />
+    <Content Include="Styles\images\person_0.jpg" />
     <Content Include="Styles\images\person_1.jpg" />
     <Content Include="Styles\images\person_2.jpg" />
     <Content Include="Styles\images\person_3.jpg" />
     <Content Include="Styles\images\person_4.jpg" />
+    <Content Include="Styles\images\person_5.jpg" />
+    <Content Include="Styles\images\person_6.jpg" />
+    <Content Include="Styles\images\person_7.jpg" />
+    <Content Include="Styles\images\person_8.jpg" />
+    <Content Include="Styles\images\person_9.jpg" />
     <Content Include="Styles\js\aos.js" />
     <Content Include="Styles\js\bootstrap-datepicker.min.js" />
     <Content Include="Styles\js\bootstrap.min.js" />
@@ -454,6 +460,7 @@
     <Content Include="Views\Events\Eventsct.cshtml" />
     <Content Include="Views\Rooms\ListRooms.cshtml" />
     <Content Include="Views\Admin\ChiTietPhong.cshtml" />
+    <Content Include="Views\Admin\ThemPhong.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

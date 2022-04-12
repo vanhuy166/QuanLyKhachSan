@@ -19,21 +19,8 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">
     <link href="~/Styles/css/aos.css" rel="stylesheet" />
-    <link href="~/fonts/flaticon.css" rel="stylesheet" />
-
+    <link href="~/Styles/fonts/flaticon/font/flaticon.css" rel="stylesheet" />
     <link href="~/Styles/css/style.css" rel="stylesheet" />
-
-    <style>
-        #Admin {
-            display: block;
-        }
-    </style>
-    @*<script>
-        $(document).ready(function () {
-
-            $('#Admin').attr('display': none)
-        }
-    </script>*@
 
 </head>
 
@@ -82,7 +69,7 @@
                                                     <li><a href="@Url.Action("ListRooms","Rooms")">Phòng đơn</a></li>
                                                     <li><a href="@Url.Action("ListRooms","Rooms")">Phòng đôi</a></li>
                                                     <li><a href="@Url.Action("ListRooms","Rooms")">Phòng gia đình</a></li>
-                                                  
+
 
                                                 </ul>
                                             </li>
@@ -96,7 +83,7 @@
                                                      width="50dp" height="	50dp" alt="" style="border-radius: 100px; ;">
                                                 <ul class="dropdown arrow-top">
                                                     <li><a href="#">tran tam</a></li>
-                                                    <li id="Admin"><a href=@Url.Action("EdipRoom","Admin")>Admin</a></li>
+                                                    <li id="Admin" style="display:none;"><a href=@Url.Action("EdipRoom","Admin")>Admin</a></li>
                                                     <li><a href=@Url.Action("History","History")>Lịch sử </a></li>
                                                     <li><a href=@Url.Action("Login","Login")>Đăng xuất</a></li>
 
@@ -211,9 +198,9 @@
 
                             <script data-cfasync="false"
                                     src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-<script>document.write(new Date().getFullYear());</script>&nbsp We are number 2, no one is number 1
-<i class="icon-heart text-primary" aria-hidden="true"></i>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            <script>document.write(new Date().getFullYear());</script>&nbsp We are number 2, no one is number 1
+                            <i class="icon-heart text-primary" aria-hidden="true"></i>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         </p>
                     </div>
 
@@ -221,116 +208,142 @@
             </div>
         </footer>
     </div>
-<script src="~/Styles/js/aos.js"></script>
-<script src="~/Styles/js/bootstrap-datepicker.min.js"></script>
-<script src="~/Styles/js/bootstrap.min.js"></script>
-<script src="~/Styles/js/jquery-3.3.1.min.js"></script>
-<script src="~/Styles/js/jquery-migrate-3.0.1.min.js"></script>
-<script src="~/Styles/js/jquery-ui.js"></script>
-<script src="~/Styles/js/jquery.countdown.min.js"></script>
-<script src="~/Styles/js/jquery.magnific-popup.min.js"></script>
-<script src="~/Styles/js/jquery.stellar.min.js"></script>
-<script src="~/Styles/js/login.js"></script>
-<script src="~/Styles/js/main.js"></script>
-<script src="~/Styles/js/mediaelement-and-player.min.js"></script>
-<script src="~/Styles/js/owl.carousel.min.js"></script>
-<script src="~/Styles/js/popper.min.js"></script>
-<script src="~/Styles/js/slick.min.js"></script>
+    <script src="~/Styles/js/aos.js"></script>
+    <script src="~/Styles/js/bootstrap-datepicker.min.js"></script>
+    <script src="~/Styles/js/bootstrap.min.js"></script>
+    <script src="~/Styles/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Styles/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="~/Styles/js/jquery-ui.js"></script>
+    <script src="~/Styles/js/jquery.countdown.min.js"></script>
+    <script src="~/Styles/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/Styles/js/jquery.stellar.min.js"></script>
+    <script src="~/Styles/js/login.js"></script>
+    <script src="~/Styles/js/main.js"></script>
+    <script src="~/Styles/js/mediaelement-and-player.min.js"></script>
+    <script src="~/Styles/js/owl.carousel.min.js"></script>
+    <script src="~/Styles/js/popper.min.js"></script>
+    <script src="~/Styles/js/slick.min.js"></script>
 
-<script>
-    function testbtn() {
-    var fromDate = new Date($('#fromDate').val());
-    var toDate = new Date($('#toDate').val());       
-        var idRoom = sessionStorage.getItem('key');
-        $.ajax({
-            url: 'https://localhost:44370/api/v1/room/' + idRoom,
-            method: 'GET',
-            contentType: 'json',
-            dataType: 'json',
-            error: function (res) {
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 
-            },
-            success: function (res) {              
-                var id = "id" + Math.random().toString(16).slice(2);
-                var oneroom = {
-                    id: id,
-                    name: res.TenPhong,
-                    price: res.LoaiPhongs[0].Gia,
-                    ing: res.Anh,
-                    date: Math.round((toDate - fromDate) / (1000 * 60 * 60 * 24)),
-                   type: "1"
-                }
-                console.log(oneroom);
-                localStorage.setItem(id.toString(), JSON.stringify(oneroom));
-                alert("Đặt thành công vui lòng kiểm tra  lịch sử để thành toán !!!")
+    <script>
+        function testbtn() {
+            var token = localStorage.getItem("token");
 
-               
-            },
-            fail: function (response) { }
+            var fromDate = new Date($('#fromDate').val());
+            var toDate = new Date($('#toDate').val());
+            var idRoom = sessionStorage.getItem('key');
+            $.ajax({
+                url: 'https://localhost:44370/api/v1/room/' + idRoom,
+                method: 'GET',
+                contentType: 'json',
+                dataType: 'json',
+                error: function (res) {
+
+                },
+                success: function (res) {
+                    var id = "id" + Math.random().toString(16).slice(2);
+                    var oneroom = {
+                        id: id,
+                        username: parseJwt(token).unique_name,
+                        name: res.TenPhong,
+                        price: res.LoaiPhongs[0].Gia,
+                        ing: res.Anh,
+                        date: Math.round((toDate - fromDate) / (1000 * 60 * 60 * 24)),
+                        type: "1"
+                    }
+                    console.log(oneroom);
+                    localStorage.setItem(id.toString(), JSON.stringify(oneroom));
+                    alert("Đặt thành công vui lòng kiểm tra  lịch sử để thành toán !!!")
+
+
+                },
+                fail: function (response) { }
+
+            });
+        }
+
+        function parseJwt(token) {
+            var base64Url = token.split('.')[1];
+            var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+            }).join(''));
+
+            return JSON.parse(jsonPayload);
+        };
+
+    </script>
+
+
+    <script>
+        $('#fromDate').change(function () {
+            var fromDate = new Date($('#fromDate').val());
+            var today = new Date();
+            var dd = fromDate.getDate();
+            var mm = fromDate.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
+            var yyyy = fromDate.getFullYear();
+            if (dd < 10) {
+                dd = '0' + dd
+            }
+            if (mm < 10) {
+                mm = '0' + mm
+            }
+
+            today = yyyy + '-' + mm + '-' + dd;
+
+            $('#toDate').attr('min', today);
 
         });
-}
-</script>
 
+        $(document).ready(function () {
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
+            var yyyy = today.getFullYear();
+            if (dd < 10) {
+                dd = '0' + dd
+            }
+            if (mm < 10) {
+                mm = '0' + mm
+            }
 
-<script>
-    $('#fromDate').change(function () {
-        var fromDate = new Date($('#fromDate').val());
-        var today = new Date();
-        var dd = fromDate.getDate();
-        var mm = fromDate.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
-        var yyyy = fromDate.getFullYear();
-        if (dd < 10) {
-            dd = '0' + dd
+            today = yyyy + '-' + mm + '-' + dd;
+
+            $('#fromDate').attr('min', today);
+
+            $('#fromDate').attr('value', today);
+            $('#toDate').attr('value', today);
+
+        });
+
+        // hiện quyền admin
+        var role = sessionStorage.getItem('role');
+        if (role == "admin") {
+            $("#Admin").css("display", "block");
         }
-        if (mm < 10) {
-            mm = '0' + mm
-        }
-
-        today = yyyy + '-' + mm + '-' + dd;
-
-        $('#toDate').attr('min', today);
-
-    });
-
-    $(document).ready(function () {
-        var today = new Date();
-        var dd = today.getDate();
-        var mm = today.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
-        var yyyy = today.getFullYear();
-        if (dd < 10) {
-            dd = '0' + dd
-        }
-        if (mm < 10) {
-            mm = '0' + mm
+        else {
+            $("#Admin").css("display", "none");
         }
 
-        today = yyyy + '-' + mm + '-' + dd;
+        document.addEventListener('DOMContentLoaded', function () {
+            var mediaElements = document.querySelectorAll('video, audio'), total = mediaElements.length;
 
-        $('#fromDate').attr('min', today);
-
-        $('#fromDate').attr('value', today);
-        $('#toDate').attr('value', today);
-
-    });
-
-    document.addEventListener('DOMContentLoaded', function () {
-        var mediaElements = document.querySelectorAll('video, audio'), total = mediaElements.length;
-
-        for (var i = 0; i < total; i++) {
-            new MediaElementPlayer(mediaElements[i], {
-                pluginPath: 'https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/',
-                shimScriptAccess: 'always',
-                success: function () {
-                    var target = document.body.querySelectorAll('.player'), targetTotal = target.length;
-                    for (var j = 0; j < targetTotal; j++) {
-                        target[j].style.visibility = 'visible';
+            for (var i = 0; i < total; i++) {
+                new MediaElementPlayer(mediaElements[i], {
+                    pluginPath: 'https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/',
+                    shimScriptAccess: 'always',
+                    success: function () {
+                        var target = document.body.querySelectorAll('.player'), targetTotal = target.length;
+                        for (var j = 0; j < targetTotal; j++) {
+                            target[j].style.visibility = 'visible';
+                        }
                     }
-                }
-            });
-        }   
-    });
-</script>
+                });
+            }
+        });
+    </script>
+
 
 
 

@@ -14,6 +14,7 @@
 
 <script>
     var idRoom = sessionStorage.getItem('keyRoomEdit');
+    var img = "";
 
     $.ajax({
         url: 'https://localhost:44370/api/v1/room/' + idRoom,
@@ -78,7 +79,7 @@
                     <p class="mb-4">Khách sạn Hoàng Hôn luôn mang vẻ đẹp hiện đại xen lẫn nét cổ kính. Đặt khách sạn sớm nhất để hưởng trọn ưu đãi, hứa hẹn một kì nghỉ với những ...</p>
                     <p>
                         <a href="https://vimeo.com/28959265" class="btn btn-primary pill px-4  popup-vimeo text-uppercase btn btn-XemVideo">Xem Video <span class="icon-arrow-right small"></span></a>
-                        <button class="btn btn-primary pill text-white px-4 btn-DatPhong" id="btn-SuaPhong" onclick="consle.log(1222222)">Sửa</button>
+                        <button onclick="editRoom()" class="btn btn-primary pill text-white px-4 btn-DatPhong" id="btn-SuaPhong">Sửa</button>
                     </p>
 
                 </div>
@@ -86,6 +87,8 @@
             `;
 
             document.getElementById('chiTietPhong').innerHTML = table;
+
+            img = res.Anh;
 
             var options = document.getElementById('sel').children;
             for (var i = 0; i < options.length; ++i) {
@@ -99,15 +102,34 @@
                 var arr = this.value.split("\\");
                 for (var i = 0; i < imageDemo.length; ++i) {
                     imageDemo[i].src = "/Styles/images/" + arr[arr.length - 1];
-                    console.log(imageDemo[i].src);
+                    img = arr[arr.length - 1];
                 }
             };
+            
+            
         },
         fail: function (response) { }
 
     });
-
-
     
+    function editRoom() {
+        var url = 'https://localhost:44370/api/v1/room/edit?idPhong=' + idRoom + '&Ten=' + $('#txtTenPhong').val() + '&idLoai=' + $('#sel :selected').val() + '&img=' + img;
+        var headers = "Bearer " + localStorage.getItem("token");
+        $.ajax({
+            url: url,
+            headers: {
+                "Authorization": headers
+            },
+            type: 'PUT',
+            error: function (err) {
+                console.log('Error!', err)
+            },
+            success: function (data) {
+                alert("Sửa thành công!!!");
+                window.location = "https://localhost:44370/Admin/EdipRoom";
+            }
+        });
+    }
+  
 </script>
 
