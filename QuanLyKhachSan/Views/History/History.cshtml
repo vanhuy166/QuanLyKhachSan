@@ -41,7 +41,7 @@
 
     var userName = parseJwt(localStorage.getItem("token")).unique_name;
 
-    console.log(userName);
+    var listDv = [], listPhong = [];
 
     var values = [],
         keys = Object.keys(localStorage),
@@ -74,10 +74,20 @@
                     <td><button type="button" class="btn btn-outline-danger" onclick="huybtn('`+ obj.id + `')">Hủy</button></td>
                 </tr>
             `;
-
+        
+        if (obj.type == 1) {
+            listPhong.push({
+                "ID_Phong": obj.idSP,
+                "NgayDen": "2022-04-13",
+                "NgayDi": "2022-04-13"
+            });
+        }
+        else {
+            listDv.push(obj.idSP);
+        }
     }
+    
 
-    console.log(TongTien);
 
     document.getElementById('allHistory').innerHTML = table;
 
@@ -99,6 +109,39 @@
 
         return JSON.parse(jsonPayload);
     };
+
+    function ThanhToan() {
+        if (TongTien != 0) {
+            var hoadon = {
+                "NgayThu": "2022-04-13",
+                "ID_DichVus": listDv,
+                "hoaDonPhongs": listPhong
+            };
+            var token = localStorage.getItem("token");
+            var headers = "Bearer " + token;
+            console.log(hoadon);
+            $.ajax({
+                url: 'https://localhost:44370/api/v1/receipt/create',
+                headers: {
+                    "Authorization": headers
+                },
+                method: 'POST',
+                data: hoadon,
+                error: function (res) {
+
+                },
+                success: function (res) {
+                    alert("Thêm thành công hóa đơn thành công !!!");
+                    localStorage.clear();
+                    localStorage.setItem("token", token);
+                    window.location = "https://localhost:44370/Home/Home";
+                },
+                fail: function (response) { }
+
+            });
+        }
+       
+    }
 
 </script>
 <script>
