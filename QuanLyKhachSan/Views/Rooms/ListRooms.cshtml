@@ -23,7 +23,7 @@
                             <h4>Bộ lọc</h4>
                         </div>
                         <div class="filter-room_header_item" style="flex: 1;">
-                            <a href="#" id="clear_filter-room">Xóa tất cả lọc</a>
+                            <a href="@Url.Action("LiStRooms", "Rooms")" id="clear_filter-room">Xóa tất cả lọc</a>
                         </div>
                     </div>
                     <div class="filter-room_body">
@@ -32,14 +32,14 @@
                             <table class="table table-hover">
                                 <tr>
                                     <td>
-                                        <input type="radio" name="LoaiPhong" id="LoaiPhongVIP">
+                                        <input type="radio" value="2" onclick="handleClick(this);" name="LoaiPhong" id="LoaiPhongVIP">
                                     </td>
                                     <td><label for="LoaiPhongVIP">VIP</label></td>
                                 </tr>
 
                                 <tr>
                                     <td>
-                                        <input type="radio" name="LoaiPhong" id="LoaiPhongThuong">
+                                        <input type="radio" value="1" onclick="handleClick(this);" name="LoaiPhong" id="LoaiPhongThuong">
                                     </td>
                                     <td><label for="LoaiPhongThuong">Thường</label></td>
                                 </tr>
@@ -50,22 +50,22 @@
                             <table class="table table-hover" style="width: 100%;">
                                 <tr>
                                     <td>
-                                        <input type="radio" name="GiaPhong" id="GiaPhong1">
+                                        <input value="1" type="radio" onclick="handleClickGia(this);" name="GiaPhong" id="GiaPhong1">
                                     </td>
-                                    <td><label for="GiaPhong1">dưới 200.000 VNĐ</label></td>
+                                    <td><label  for="GiaPhong1">dưới 500.000 VNĐ</label></td>
                                 </tr>
 
                                 <tr>
                                     <td>
-                                        <input type="radio" name="GiaPhong" id="GiaPhong2">
+                                        <input value="2" type="radio" onclick="handleClickGia(this);" name="GiaPhong" id="GiaPhong2">
                                     </td>
-                                    <td><label for="GiaPhong2">200.000 đến 600.000VND</label></td>
+                                    <td><label for="GiaPhong2">500.000 đến 1.000.000VND</label></td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input type="radio" name="GiaPhong" id="GiaPhong3">
+                                        <input value="3" type="radio" onclick="handleClickGia(this);" name="GiaPhong" id="GiaPhong3">
                                     </td>
-                                    <td><label for="GiaPhong3">trên 600.000 VNĐ</label></td>
+                                    <td><label for="GiaPhong3">trên 1.000.000 VNĐ</label></td>
                                 </tr>
                             </table>
                         </div>
@@ -145,13 +145,12 @@
          success: function (res) {
              $("#listRoom").empty();
                 const len = res.length;
-                console.log(res);
                 let table = '';
                 for (var i = 0; i < len; ++i) {
                     table += `
                     <div class="col-md-6 col-lg-4 mb-5">
                         <div class="hotel-room text-center" onclick = "clickRoom('`+res[i].ID_Phong+`');">
-                            <a href="@Url.Action("RoomDetail","Rooms")" class="d-block mb-0 thumbnail"><img src="/Styles/images/`+ res[i].Anh + `" alt="Image" class="img-fluid"></a>
+                            <a href="@Url.Action("RoomDetail","Rooms")" class="d-block mb-0 thumbnail" style="height:200px;"><img style="height:200px;" src="/Styles/images/`+ res[i].Anh + `" alt="Image" class="img-fluid"></a>
                             <div class="hotel-room-body">
                                 <h3 class="heading mb-0"><a href="@Url.Action("RoomDetail","Rooms")">`+ res[i].TenPhong + `</a></h3>
                                 <strong class="price">`+ res[i].LoaiPhongs[0].Gia + ` VNĐ/ per night</strong>
@@ -169,5 +168,90 @@
     function clickRoom(idRoom) {
         sessionStorage.setItem('key', idRoom);
     }
+
+    function handleClick(myRadio) {
+        $.ajax({
+            url: 'https://localhost:44370/api/v1/room/byType/' + myRadio.value,
+            method: 'GET',
+            contentType: 'json',
+            dataType: 'json',
+            error: function (res) {
+
+            },
+         success: function (res) {
+             $("#listRoom").empty();
+                const len = res.length;
+                let table = '';
+                for (var i = 0; i < len; ++i) {
+                    table += `
+                    <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="hotel-room text-center" onclick = "clickRoom('`+res[i].ID_Phong+`');">
+                            <a href="@Url.Action("RoomDetail","Rooms")" class="d-block mb-0 thumbnail" style="height:200px;"><img style="height:200px;" src="/Styles/images/`+ res[i].Anh + `" alt="Image" class="img-fluid"></a>
+                            <div class="hotel-room-body">
+                                <h3 class="heading mb-0"><a href="@Url.Action("RoomDetail","Rooms")">`+ res[i].TenPhong + `</a></h3>
+                                <strong class="price">`+ res[i].LoaiPhongs[0].Gia + ` VNĐ/ per night</strong>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                }
+             document.getElementById('listRoom').innerHTML = table;
+            },
+            fail: function (response) { }
+
+     });
+    }
+
+    function handleClickGia(myRadio) {
+        var fromGia=0, toGia=0;
+        switch (myRadio.value) {
+            case "1":
+                fromGia = 0;
+                toGia = 500000;
+                break;
+            case "2":
+                fromGia = 500000;
+                toGia = 1000000;
+                break;
+            case "3":
+                fromGia = 1000000;
+                toGia = 1000000000;
+                break;
+        }
+       
+
+        $.ajax({
+            url: 'https://localhost:44370/api/v1/room/byPrice?from=' + fromGia + '&to=' + toGia,
+            method: 'GET',
+            contentType: 'json',
+            dataType: 'json',
+            error: function (res) {
+
+            },
+         success: function (res) {
+             $("#listRoom").empty();
+                const len = res.length;
+                let table = '';
+                for (var i = 0; i < len; ++i) {
+                    table += `
+                    <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="hotel-room text-center" onclick = "clickRoom('`+res[i].ID_Phong+`');">
+                            <a href="@Url.Action("RoomDetail","Rooms")" class="d-block mb-0 thumbnail" style="height:200px;"><img style="height:200px;" src="/Styles/images/`+ res[i].Anh + `" alt="Image" class="img-fluid"></a>
+                            <div class="hotel-room-body">
+                                <h3 class="heading mb-0"><a href="@Url.Action("RoomDetail","Rooms")">`+ res[i].TenPhong + `</a></h3>
+                                <strong class="price">`+ res[i].LoaiPhongs[0].Gia + ` VNĐ/ per night</strong>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                }
+             document.getElementById('listRoom').innerHTML = table;
+            },
+            fail: function (response) { }
+
+     });
+    }
+
+
 </script>
 

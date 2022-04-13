@@ -22,7 +22,7 @@
                             <h4>Bộ lọc</h4>
                         </div>
                         <div class="filter-room_header_item" style="flex: 1;">
-                            <a href="#" id="clear_filter-room">Xóa tất cả lọc</a>
+                            <a href="@Url.Action("Events", "Events")" id="clear_filter-room">Xóa tất cả lọc</a>
                         </div>
                     </div>
                     <div class="filter-room_body">
@@ -31,30 +31,30 @@
                             <table class="table table-hover">
                                 <tr>
                                     <td>
-                                        <input type="radio" name="LoaiDV" id="DVDoUong">
+                                        <input type="radio" onclick="handleClick(this);" value="Sức khỏe" name="LoaiDV" id="DVDoUong">
                                     </td>
-                                    <td><label for="DVDoUong">Đồ uống</label></td>
+                                    <td><label for="DVDoUong">Sức khỏe</label></td>
                                 </tr>
 
                                 <tr>
                                     <td>
-                                        <input type="radio" name="LoaiDV" id="DVDoAn">
+                                        <input type="radio" onclick="handleClick(this);" value="Giải trí" name="LoaiDV" id="DVDoAn">
                                     </td>
-                                    <td><label for="DVDoAn">Đồ ăn</label></td>
+                                    <td><label for="DVDoAn">Giải trí</label></td>
                                 </tr>
 
                                 <tr>
                                     <td>
-                                        <input type="radio" name="LoaiDV" id="DVGiaLa">
+                                        <input type="radio" onclick="handleClick(this);" value="Thể thao" name="LoaiDV" id="DVGiaLa">
                                     </td>
-                                    <td><label for="DVGiaLa">Giặt ủi</label></td>
+                                    <td><label for="DVGiaLa">Thể thao</label></td>
                                 </tr>
 
                                 <tr>
                                     <td>
-                                        <input type="radio" name="LoaiDV" id="DVMassage">
+                                        <input type="radio" onclick="handleClick(this);" value="Vệ sinh" name="LoaiDV" id="DVMassage">
                                     </td>
-                                    <td><label for="DVMassage">Massage</label></td>
+                                    <td><label for="DVMassage">Vệ sinh</label></td>
                                 </tr>
                             </table>
                         </div>
@@ -63,28 +63,28 @@
                             <table class="table table-hover" style="width: 100%;">
                                 <tr>
                                     <td>
-                                        <input type="radio" name="GiaDV" id="GiaDV1">
+                                        <input value="1" onclick="handleClickGia(this);" type="radio" name="GiaDV" id="GiaDV1">
                                     </td>
                                     <td><label for="GiaDV1">dưới 50.000 VNĐ</label></td>
                                 </tr>
 
                                 <tr>
                                     <td>
-                                        <input type="radio" name="GiaDV" id="GiaDV2">
+                                        <input value="2" onclick="handleClickGia(this);" type="radio" name="GiaDV" id="GiaDV2">
                                     </td>
-                                    <td><label for="GiaDV2">50.000 đến 150.000VND</label></td>
+                                    <td><label for="GiaDV2">50.000 đến 100.000VND</label></td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input type="radio" name="GiaDV" id="GiaDV2">
+                                        <input value="3" onclick="handleClickGia(this);" type="radio" name="GiaDV" id="GiaDV3">
                                     </td>
-                                    <td><label for="GiaDV2">150.000 đến 250.000VND</label></td>
+                                    <td><label for="GiaDV3">100.000 đến 200.000VND</label></td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input type="radio" name="GiaDV" id="GiaDV3">
+                                        <input value="4" onclick="handleClickGia(this);" type="radio" name="GiaDV" id="GiaDV4">
                                     </td>
-                                    <td><label for="GiaDV3">trên 250.000 VNĐ</label></td>
+                                    <td><label for="GiaDV4">trên 200.000 VNĐ</label></td>
                                 </tr>
                             </table>
                         </div>
@@ -146,8 +146,6 @@
 
                                 <p onclick="clickDv('`+ res[i].ID_DichVu +`')"><a   href= "@Url.Action("Eventsct", "Events")" class="btn btn-primary pill text-white px-4">Buy Now</a></p>
 
-
-
                             </div>
                         </div>
                     </div>
@@ -160,6 +158,97 @@
     });
     function clickDv(idDichvu) {
         sessionStorage.setItem('key1', idDichvu);
+    }
+
+    function handleClick(myRadio) {
+        $.ajax({
+            url: 'https://localhost:44370/api/v1/hotelServices/byType?type=' + myRadio.value,
+            method: 'GET',
+            contentType: 'json',
+            dataType: 'json',
+            error: function (res) {
+
+            },
+         success: function (res) {
+             $("#listDichVu").empty();
+                const len = res.length;
+                let table = '';
+                for (var i = 0; i < len; ++i) {
+                    table += `
+                    <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="hotel-room text-center">
+                            <a href="#" class="d-block mb-0 thumbnail"><img src="/Styles/images/`+res[i].Anh+`" alt="Image" class="img-fluid img-service"></a>
+                            <div class="hotel-room-body">
+                                <h3 class="heading mb-0"><a href="#">`+res[i].Ten+`</a></h3>
+                                <strong class="price">`+ res[i].Gia +` VNĐ</strong>
+
+                                <p onclick="clickDv('`+ res[i].ID_DichVu +`')"><a   href= "@Url.Action("Eventsct", "Events")" class="btn btn-primary pill text-white px-4">Buy Now</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                }
+             document.getElementById('listDichVu').innerHTML = table;
+            },
+            fail: function (response) { }
+
+     });
+    }
+
+    function handleClickGia(myRadio) {
+
+        var fromGia = 0, toGia = 0;
+        switch (myRadio.value) {
+            case "1":
+                fromGia = 0;
+                toGia = 50000;
+                break;
+            case "2":
+                fromGia = 50001;
+                toGia = 100000;
+                break;
+            case "3":
+                fromGia = 100001;
+                toGia = 200000;
+                break;
+            case "4":
+                fromGia = 200001;
+                toGia = 1000000000;
+                break;
+        }
+
+        $.ajax({
+            url: 'https://localhost:44370/api/v1/hotelServices/byPrice?from=' + fromGia + '&to=' + toGia,
+            method: 'GET',
+            contentType: 'json',
+            dataType: 'json',
+            error: function (res) {
+
+            },
+         success: function (res) {
+             $("#listDichVu").empty();
+                const len = res.length;
+                let table = '';
+                for (var i = 0; i < len; ++i) {
+                    table += `
+                    <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="hotel-room text-center">
+                            <a href="#" class="d-block mb-0 thumbnail"><img src="/Styles/images/`+res[i].Anh+`" alt="Image" class="img-fluid img-service"></a>
+                            <div class="hotel-room-body">
+                                <h3 class="heading mb-0"><a href="#">`+res[i].Ten+`</a></h3>
+                                <strong class="price">`+ res[i].Gia +` VNĐ</strong>
+
+                                <p onclick="clickDv('`+ res[i].ID_DichVu +`')"><a   href= "@Url.Action("Eventsct", "Events")" class="btn btn-primary pill text-white px-4">Buy Now</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                }
+             document.getElementById('listDichVu').innerHTML = table;
+            },
+            fail: function (response) { }
+
+     });
     }
 
 </script>

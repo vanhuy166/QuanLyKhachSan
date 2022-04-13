@@ -64,8 +64,9 @@
                     else {
                         sessionStorage.setItem('role', "user");
                     }
-                    alert("Đăng nhập thành công.");
-                    window.location = "https://localhost:44370/Home/Home";
+                    console.log(parseJwt(token[1]));
+                    alert("đăng nhập thành công.");
+                    window.location = "https://localhost:44370/home/home";
                 }
             });
         });

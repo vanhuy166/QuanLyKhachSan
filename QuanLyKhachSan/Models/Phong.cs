@@ -9,6 +9,7 @@
 
 namespace QuanLyKhachSan.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -24,7 +25,8 @@ namespace QuanLyKhachSan.Models
         public int ID_Phong { get; set; }
         public string TenPhong { get; set; }
         public string Anh { get; set; }
-    
+
+        [JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HoaDon_Phong> HoaDon_Phong { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
