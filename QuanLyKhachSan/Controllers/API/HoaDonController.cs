@@ -23,20 +23,27 @@ namespace QuanLyKhachSan.Controllers
             ks.HoaDons.Add(hd);
             ks.SaveChanges();
 
-            HoaDon_Phong hdp = new HoaDon_Phong();
-            hdp.ID_HD = hd.ID_HD;
-            hdp.ID_Phong = request.ID_Phong;
-            hdp.NgayDen = request.NgayDen;
-            hdp.NgayDi = request.NgayDi;
-            ks.HoaDon_Phong.Add(hdp);
+            foreach (var hoaDonPhong in request.hoaDonPhongs)
+            {
+                HoaDon_Phong hdp = new HoaDon_Phong();
+                hdp.ID_HD = hd.ID_HD;
+                hdp.ID_Phong = hoaDonPhong.ID_Phong;
+                hdp.NgayDen = hoaDonPhong.NgayDen;
+                hdp.NgayDi = hoaDonPhong.NgayDi;
+                ks.HoaDon_Phong.Add(hdp);
+            }
 
             TaiKhoan tk = ks.TaiKhoans.SingleOrDefault(
                 acc => acc.ID_TK == request.ID_TK);
             tk.HoaDons.Add(hd);
 
-            DichVu dv = ks.DichVus.SingleOrDefault(
-                svc => svc.ID_DichVu == request.ID_DichVu);
-            dv.HoaDons.Add(hd);
+            foreach (var idDichVu in request.ID_DichVus)
+            {
+                DichVu dv = ks.DichVus.SingleOrDefault(
+                    svc => svc.ID_DichVu == idDichVu);
+                dv.HoaDons.Add(hd);
+            }
+
             ks.SaveChanges();
 
             return Request.CreateResponse(System.Net.HttpStatusCode.OK);
