@@ -78,8 +78,8 @@
         if (obj.type == 1) {
             listPhong.push({
                 "ID_Phong": obj.idSP,
-                "NgayDen": "2022-04-13",
-                "NgayDi": "2022-04-13"
+                "NgayDen": obj.NgayDen,
+                "NgayDi": obj.NgayDi
             });
         }
         else {
@@ -112,14 +112,29 @@
 
     function ThanhToan() {
         if (TongTien != 0) {
+
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
+            var yyyy = today.getFullYear();
+            if (dd < 10) {
+                dd = '0' + dd
+            }
+            if (mm < 10) {
+                mm = '0' + mm
+            }
+
+            today = yyyy + '-' + mm + '-' + dd;
+
+
             var hoadon = {
-                "NgayThu": "2022-04-13",
+                "NgayThu": today,
                 "ID_DichVus": listDv,
                 "hoaDonPhongs": listPhong
             };
             var token = localStorage.getItem("token");
             var headers = "Bearer " + token;
-            console.log(hoadon);
+
             $.ajax({
                 url: 'https://localhost:44370/api/v1/receipt/create',
                 headers: {
@@ -130,16 +145,45 @@
                 error: function (res) {
 
                 },
+                
                 success: function (res) {
+                    var id = ["hoadon." + Math.random().toString(16).slice(2)];
                     alert("Thêm thành công hóa đơn thành công !!!");
-                    localStorage.clear();
-                    localStorage.setItem("token", token);
+                    var values = [],
+                        keys = Object.keys(localStorage),
+                        i = keys.length;
+
+                    while (i--) {
+                        if (keys[i] == "token") {
+                            continue;
+                        }
+
+                        if (keys[i].split('.')[0] != "hoadon") {
+                            var obj = JSON.parse(localStorage.getItem(keys[i]));
+
+                            if (obj.username == userName) {
+                                localStorage.removeItem(keys[i]);
+                            }
+                           
+                        }
+                        localStorage.setItem(id, JSON.stringify(listPhong));
+                        
+                        
+                    }
+
+                    //localStorage.clear();
+                    
+                    //localStorage.setItem("token", token);
                     window.location = "https://localhost:44370/Home/Home";
                 },
                 fail: function (response) { }
 
             });
+
+
         }
+
+
        
     }
 

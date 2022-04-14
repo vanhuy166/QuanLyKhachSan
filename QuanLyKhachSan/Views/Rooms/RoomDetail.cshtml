@@ -13,6 +13,8 @@
     </div>
 </div>
 
+
+
 <script>
     var idRoom = sessionStorage.getItem('key');
 
@@ -26,8 +28,6 @@
         },
         success: function (res) {
             $("#chiTietPhong").empty();
-            const len = res.length;
-            console.log(res);
             let table = '';
 
             table += `
@@ -69,7 +69,7 @@
 
                         <tr>
                             <th>Ngày đến</th>
-                            <td> <input type="date" id="fromDate" name="fromDate" ></td>
+                            <td> <input type="date" id="fromDate" onchange="fromDateChange()" name="fromDate" ></td>
                         </tr>
                         <tr>
                             <th>Ngày đi</th>
@@ -95,9 +95,9 @@
     });
 </script>
 
-
 <script>
-    $('#fromDate').change(function () {
+    function fromDateChange() {
+        
         var fromDate = new Date($('#fromDate').val());
         var today = new Date();
         var dd = fromDate.getDate();
@@ -111,10 +111,9 @@
         }
 
         today = yyyy + '-' + mm + '-' + dd;
-
         $('#toDate').attr('min', today);
 
-    });
+    }
 
     $(document).ready(function () {
         var today = new Date();
@@ -131,6 +130,7 @@
         today = yyyy + '-' + mm + '-' + dd;
 
         $('#fromDate').attr('min', today);
+        $('#toDate').attr('min', today);
 
         $('#fromDate').attr('value', today);
         $('#toDate').attr('value', today);
@@ -154,3 +154,5 @@
         }
     });
 </script>
+
+

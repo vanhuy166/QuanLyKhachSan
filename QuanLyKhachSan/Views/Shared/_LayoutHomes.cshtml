@@ -8,7 +8,6 @@
     <link href="~/Styles/fonts/icomoon/style.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Work+Sans:300,400,700" rel="stylesheet">
     <link href="~/Styles/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/fonts/style.css" rel="stylesheet" />
     <link href="~/Styles/css/magnific-popup.css" rel="stylesheet" />
     <link href="~/Styles/css/jquery-ui.css" rel="stylesheet" />
     <link href="~/Styles/css/owl.carousel.min.css" rel="stylesheet" />
@@ -191,20 +190,20 @@
                         </div>
                     </div>
                 </div>
-                <div class="row pt-5 mt-5 text-center">
+                <!--<div class="row pt-5 mt-5 text-center">
                     <div class="col-md-12">
-                        <p>
+                        <p>-->
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 
-                            <script data-cfasync="false"
+                            <!--<script data-cfasync="false"
                                     src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
                             <script>document.write(new Date().getFullYear());</script>&nbsp We are number 2, no one is number 1
-                            <i class="icon-heart text-primary" aria-hidden="true"></i>
+                            <i class="icon-heart text-primary" aria-hidden="true"></i>-->
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        </p>
+                        <!--</p>
                     </div>
 
-                </div>
+                </div>-->
             </div>
         </footer>
     </div>
@@ -217,7 +216,6 @@
     <script src="~/Styles/js/jquery.countdown.min.js"></script>
     <script src="~/Styles/js/jquery.magnific-popup.min.js"></script>
     <script src="~/Styles/js/jquery.stellar.min.js"></script>
-    <script src="~/Styles/js/login.js"></script>
     <script src="~/Styles/js/main.js"></script>
     <script src="~/Styles/js/mediaelement-and-player.min.js"></script>
     <script src="~/Styles/js/owl.carousel.min.js"></script>
@@ -233,6 +231,38 @@
             var fromDate = new Date($('#fromDate').val());
             var toDate = new Date($('#toDate').val());
             var idRoom = sessionStorage.getItem('key');
+            //var check = true;
+
+            var values = [],
+                keys = Object.keys(localStorage),
+                i = keys.length;
+
+            while (i--) {
+                if (keys[i] == "token") {
+                    continue;
+                }
+
+                var obj = localStorage.getItem(keys[i]);
+                if (keys[i].split('.')[0] == "hoadon") {
+                    var obj = localStorage.getItem(keys[i]);
+                    var t1 = obj.split('[')[1];
+                    var t2 = t1.split(']')[0];
+                    obj = JSON.parse(t2);
+                 
+                }
+                else {
+                    obj = JSON.parse(localStorage.getItem(keys[i]));
+                }
+
+                
+                if (obj.ID_Phong == idRoom) {
+                    if (($('#fromDate').val() <= obj.NgayDi && $('#fromDate').val() >= obj.NgayDen) || ($('#toDate').val() <= obj.NgayDi && $('#toDate').val() >= obj.NgayDen)) {
+                        alert("không bé ơi");
+                        return;
+                    }
+                }
+            }
+
             $.ajax({
                 url: 'https://localhost:44370/api/v1/room/' + idRoom,
                 method: 'GET',
@@ -251,9 +281,11 @@
                         ing: res.Anh,
                         date: Math.round((toDate - fromDate) / (1000 * 60 * 60 * 24)),
                         idSP: idRoom,
+                        NgayDen: $('#fromDate').val(),
+                        NgayDi: $('#toDate').val(),
+                        ID_Phong: idRoom,
                         type: "1"
                     }
-                    console.log(oneroom);
                     localStorage.setItem(id.toString(), JSON.stringify(oneroom));
                     alert("Đặt thành công vui lòng kiểm tra  lịch sử để thành toán !!!")
 
@@ -278,45 +310,6 @@
 
 
     <script>
-        $('#fromDate').change(function () {
-            var fromDate = new Date($('#fromDate').val());
-            var today = new Date();
-            var dd = fromDate.getDate();
-            var mm = fromDate.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
-            var yyyy = fromDate.getFullYear();
-            if (dd < 10) {
-                dd = '0' + dd
-            }
-            if (mm < 10) {
-                mm = '0' + mm
-            }
-
-            today = yyyy + '-' + mm + '-' + dd;
-
-            $('#toDate').attr('min', today);
-
-        });
-
-        $(document).ready(function () {
-            var today = new Date();
-            var dd = today.getDate();
-            var mm = today.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
-            var yyyy = today.getFullYear();
-            if (dd < 10) {
-                dd = '0' + dd
-            }
-            if (mm < 10) {
-                mm = '0' + mm
-            }
-
-            today = yyyy + '-' + mm + '-' + dd;
-
-            $('#fromDate').attr('min', today);
-
-            $('#fromDate').attr('value', today);
-            $('#toDate').attr('value', today);
-
-        });
 
         // hiện quyền admin
         var role = sessionStorage.getItem('role');

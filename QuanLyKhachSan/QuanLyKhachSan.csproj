@@ -413,7 +413,6 @@
     <Content Include="Styles\js\jquery.countdown.min.js" />
     <Content Include="Styles\js\jquery.magnific-popup.min.js" />
     <Content Include="Styles\js\jquery.stellar.min.js" />
-    <Content Include="Styles\js\login.js" />
     <Content Include="Styles\js\main.js" />
     <Content Include="Styles\js\mediaelement-and-player.min.js" />
     <Content Include="Styles\js\owl.carousel.min.js" />
